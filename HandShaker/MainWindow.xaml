@@ -71,9 +71,7 @@
                                         Style="{StaticResource IconButtonStyle}"
                                         Content="{StaticResource search}"/>
                                     
-                                    <!-- Search PlaceHolder -->
-                                    <TextBlock
-                                        />
+                                    
 
                                     <!-- Input Control for Chat Name -->
                                     <TextBox
