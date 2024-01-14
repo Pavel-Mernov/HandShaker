@@ -128,16 +128,25 @@
                 Height="50"
                 MouseDown="Border_MouseDown">
                 <Grid>
-                    
-                    <TextBlock
-                        Text="{Binding Title, ElementName=mainWindow}"
+                    <!-- Panel for Icon and app name -->
+                    <StackPanel
+                        Orientation="Horizontal"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
+                        Margin="10, 0,0,0">
+
+                        <Image 
+                            Height="45"
+                            Source="/Assets/mainIcon.png"/>
                         
-                        FontSize="30"
-                        Margin="10,0,0,0">
-                    </TextBlock>
-                    
+                        <TextBlock
+                            Text="{Binding Title, ElementName=mainWindow}"
+                            FontSize="30"
+                            FontWeight="Bold"
+                            Margin="10,0,0,0">
+                        </TextBlock>
+                    </StackPanel>
+
                     <!-- Window Buttons-->
                     <StackPanel
                         HorizontalAlignment="Right"
