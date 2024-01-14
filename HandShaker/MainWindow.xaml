@@ -30,7 +30,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/> <!-- Column for contact chat list -->
                 <ColumnDefinition /> <!-- Conversation area -->
-                <ColumnDefinition Width="Auto"/>
+                
             </Grid.ColumnDefinitions>
 
             <Grid
@@ -110,7 +110,16 @@
                 </Border>
             </Grid>
 
-            
+            <StackPanel
+                Grid.Row="2"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Vertical">
+
+                <Image Source="/Assets/mainIcon.png"
+                       Height="200"/>
+            </StackPanel>
             
             <!-- Title Bar -->
             <Border 
