@@ -64,5 +64,17 @@ namespace HandShaker
         {
 
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtSearchChat.Text))
+            {
+                lblSearch.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                lblSearch.Visibility = Visibility.Hidden;
+            }
+        }
     }
 }

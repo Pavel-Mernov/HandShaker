@@ -77,13 +77,25 @@
 
                                     <!-- Input Control for Chat Name -->
                                     <TextBox
+                                        x:Name="txtSearchChat"
                                         FontSize="28"
                                         Margin="10, 0, 0, 0"
                                         FontWeight="SemiBold"
                                         Foreground="{StaticResource DarkGray}"
                                         VerticalContentAlignment="Center"
                                         BorderThickness="0"
-                                        Background="Transparent"/>
+                                        Background="Transparent"
+                                        TextChanged="TextBox_TextChanged"/>
+                                    
+                                    <!-- Text Label for search -->
+                                    <Label
+                                        x:Name="lblSearch"
+                                        Foreground="{StaticResource DarkGray}"
+                                        FontSize="28"
+                                        FontWeight="SemiBold"
+                                        VerticalContentAlignment="Center"
+                                        HorizontalContentAlignment="Left"
+                                        Content="Search"/>
                                 </StackPanel>
                             </Border>
                         </Grid>
