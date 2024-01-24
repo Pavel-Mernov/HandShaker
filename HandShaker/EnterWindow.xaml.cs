@@ -24,15 +24,14 @@ namespace HandShaker
         private static readonly string _enterLoginText = "Введите логин";
         private static readonly string _enterPasswordText = "Введите пароль";
 
-        // color brush constants
-        private readonly Brush _darkGrayBrush;
+
 
         public EnterWindow()
         {
             InitializeComponent();
-            
 
-            _darkGrayBrush = (SolidColorBrush)FindResource("DarkGray");
+
+            
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -41,11 +40,6 @@ namespace HandShaker
             {
                 DragMove();
             }
-        }
-
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
         }
 
         // Click here if you forgot password

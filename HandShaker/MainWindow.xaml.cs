@@ -43,18 +43,6 @@ namespace HandShaker
             Application.Current.Shutdown();
         }
 
-        private void btnMaximize_Click(object sender, RoutedEventArgs e)
-        {
-            if (WindowState == WindowState.Normal)
-            {
-                WindowState = WindowState.Maximized;
-            }
-            else
-            {
-                WindowState = WindowState.Normal;
-            }
-        }
-
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
 

@@ -1,7 +1,10 @@
-﻿<ResourceDictionary 
+﻿<ResourceDictionary
+    x:Name="themesDictionary"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:HandShaker">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:handshaker="clr-namespace:HandShaker" 
+    xmlns:assets="clr-namespace:HandShaker.Assets"
+    >
 
     <!-- Style for Icon Buttons -->
     <Style x:Key="IconButtonStyle" TargetType="{x:Type Button}">
@@ -18,8 +21,8 @@
                     <Border 
                     Background="{TemplateBinding Background}">
                         <Path
-                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
                         Data="{TemplateBinding Content}"
                         Fill="{TemplateBinding Foreground}"/>
                     </Border>
@@ -131,24 +134,28 @@
                 TargetType="{x:Type Button}">
 
                     <Border
-                    BorderBrush="Black"
-                    BorderThickness="3"
-                    Background="{StaticResource ButtonBlue}"
-                    Padding="10, 15"
-                    CornerRadius="15">
+                        Name="Border"
+                        BorderBrush="Black"
+                        BorderThickness="3"
+                        Background="{StaticResource ButtonBlue}"
+                        Padding="10, 15"
+                        CornerRadius="15">
 
                         <TextBlock
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Foreground="White"
-                        FontWeight="SemiBold"
-                        FontSize="20"
-                        Text="{TemplateBinding Tag}"/>
+                            Name="TextBlock"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Foreground="White"
+                            FontWeight="SemiBold"
+                            FontSize="20"
+                            Text="{TemplateBinding Tag}"/>
                     </Border>
 
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+
+    
 
 </ResourceDictionary>

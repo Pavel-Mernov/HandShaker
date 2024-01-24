@@ -5,7 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:HandShaker"
+    xmlns:local="clr-namespace:HandShaker" 
+    xmlns:local1="clr-namespace:HandShaker.Assets.UniversalElements"
     mc:Ignorable="d"
     Title="HandShaker"
     AllowsTransparency="True"
@@ -149,11 +150,10 @@
                     </StackPanel>
                     
                     <!-- Button for entering the messenger app -->
-                    <Button
+                    <local1:BlueButton
                         x:Name="btnEnter"
-                        Margin="20"
+                        Margin="0, 20"
                         Tag="Войти"
-                        Style="{StaticResource BlueButtonStyle}"
                         Click="btnEnter_Click"/>
                 </StackPanel>
             </StackPanel>
@@ -190,14 +190,8 @@
                         HorizontalAlignment="Right"
                         Margin="10, 0"
                         Orientation="Horizontal">
-                        
-                        <Button
-                            
-                            x:Name="btnClose"
-                            Content="{StaticResource close}"
-                            Style="{StaticResource IconButtonStyle}" 
-                            Click="btnClose_Click"
-                            />
+
+                        <local1:CloseButton/>
                     </StackPanel>
                 </Grid>
             </Border>

@@ -6,7 +6,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HandShaker"
+        xmlns:local="clr-namespace:HandShaker" xmlns:universalelements="clr-namespace:HandShaker.Assets.UniversalElements"
         mc:Ignorable="d"
         Title="HandShaker" 
         FontSize="15"
@@ -20,7 +20,7 @@
         CornerRadius="0"
         Background="{StaticResource BlankFilling}"
         BorderThickness="3"
-        BorderBrush="{StaticResource BorderGray}">
+        BorderBrush="{Binding ElementName=Assets.ColorResources.Colors}">
 
         <Grid>
             <Grid.RowDefinitions>
@@ -99,12 +99,11 @@
                         </Grid>
 
                         <!-- Go to profile Button -->
-                        <Button
+                        <universalelements:BlueButton
                             Margin="0, 20"
-                            Name="btnGoToProfile"
+                            x:Name="btnGoToProfile"
                             Tag="Перейти в профиль"
-                            Click="btnGoToProfile_Click"
-                            Style="{StaticResource BlueButtonStyle}"/>
+                            Click="btnGoToProfile_Click"/>
                     </StackPanel>
                     
                 </Border>
@@ -152,24 +151,11 @@
                         HorizontalAlignment="Right"
                         Margin="10, 0"
                         Orientation="Horizontal">
-                        <Button 
-                            Name="btnMinimize" 
-                            Content="{StaticResource minimize}"
-                            Style="{StaticResource IconButtonStyle}" 
-                            Click="btnMinimize_Click" 
-                            />
-                        <Button
-                            x:Name="btnMaximize"
-                            Content="{StaticResource maximize}"
-                            Style="{StaticResource IconButtonStyle}" 
-                            Click="btnMaximize_Click" 
-                            />
-                        <Button
-                            x:Name="btnClose"
-                            Content="{StaticResource close}"
-                            Style="{StaticResource IconButtonStyle}" 
-                            Click="btnClose_Click"
-                            />
+                        <universalelements:MinimizeButton Window="{Binding ElementName=mainWindow}"/>
+
+                        <universalelements:MaximizeButton Window="{Binding ElementName=mainWindow}"/>
+
+                        <universalelements:CloseButton/>
                     </StackPanel>
                 </Grid>
             </Border>
