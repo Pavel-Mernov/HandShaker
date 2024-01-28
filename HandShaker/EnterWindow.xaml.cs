@@ -79,5 +79,15 @@ namespace HandShaker
 
             mainWindow.Show();
         }
+
+        private void loginBorder_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            txtLogin.Focus();
+        }
+
+        private void passwordBorder_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            passwordBox.Focus();
+        }
     }
 }
