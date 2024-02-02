@@ -1,0 +1,15 @@
+﻿<Application x:Class="HandShaker.Admin.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:HandShaker.Admin"
+             StartupUri="EnterWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Assets/Colors.xaml"/>
+                <ResourceDictionary Source="/Assets/Themes.xaml"/>
+                <ResourceDictionary Source="/Assets/Icons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Colors -->
+    <Brush x:Key="BorderGray">#AFAFAF</Brush>
+    <Brush x:Key="BlankFilling">#F9F9F9</Brush>
+    <Brush x:Key="LightGrayFilling">#EAEAEA</Brush>
+    <Brush x:Key="DarkGray">#7f7f7f</Brush>
+    <Brush x:Key="ButtonBlue">#1D94EB</Brush>
+    <Brush x:Key="ButtonLightBlue">#3DBFFF</Brush>
+    <Brush x:Key="ClosingButtonRed">#BF4040</Brush>
+
+</ResourceDictionary>
