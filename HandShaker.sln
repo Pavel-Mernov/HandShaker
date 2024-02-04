@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandShaker", "HandShaker\Ha
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HandShaker.Server", "HandShaker.Server\HandShaker.Server.csproj", "{0181397F-5883-4C3B-ABE2-A02E44D5E4CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandShaker.Admin", "HandShaker.Admin\HandShaker.Admin.csproj", "{3E6718B9-6560-4DC9-AE64-93F37EE92004}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{0181397F-5883-4C3B-ABE2-A02E44D5E4CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0181397F-5883-4C3B-ABE2-A02E44D5E4CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0181397F-5883-4C3B-ABE2-A02E44D5E4CD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3E6718B9-6560-4DC9-AE64-93F37EE92004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E6718B9-6560-4DC9-AE64-93F37EE92004}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3E6718B9-6560-4DC9-AE64-93F37EE92004}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3E6718B9-6560-4DC9-AE64-93F37EE92004}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
