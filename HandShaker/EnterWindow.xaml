@@ -16,7 +16,7 @@
     Width="600"
     WindowStartupLocation="CenterScreen">
     
-        <Border 
+    <Border 
         CornerRadius="0"
         Background="{StaticResource BlankFilling}"
         BorderThickness="3"

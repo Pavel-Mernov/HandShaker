@@ -50,7 +50,9 @@ namespace HandShaker
 
         private void btnGoToProfile_Click(object sender, RoutedEventArgs e)
         {
-
+            var profileWindow = new ProfileWindow();
+            this.Hide();
+            profileWindow.Show();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
