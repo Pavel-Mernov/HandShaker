@@ -76,6 +76,7 @@
     <Compile Include="ProfileWindow.xaml.cs">
       <DependentUpon>ProfileWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserLib\User.cs" />
     <Compile Include="WebSocket\Client.cs" />
     <Page Include="Assets\ColorResources\Colors.xaml">
       <SubType>Designer</SubType>
@@ -137,6 +138,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -166,6 +170,8 @@
   <ItemGroup>
     <Resource Include="favicon.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="UserLib\PhotoMeCaucasus.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

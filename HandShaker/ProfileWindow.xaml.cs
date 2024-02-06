@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HandShaker.UserLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,21 @@ namespace HandShaker
     /// </summary>
     public partial class ProfileWindow : Window
     {
-        public ProfileWindow()
+
+        public ProfileWindow(User user)
         {
             InitializeComponent();
+            this.user = user;
+
+            /*
+            var binding = new Binding()
+            {
+                ElementName = "user",
+                Path = new PropertyPath("ImageSource")
+            };
+
+            avatarImage.SetBinding(Image.SourceProperty, binding);
+            */
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -30,6 +43,26 @@ namespace HandShaker
             {
                 DragMove();
             }
+        }
+
+        private void btnChangePhoto_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+
+        private void btnChangePassword_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        // Close this window and go back to messenger window
+        private void btnGoToMessages_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = new MainWindow();
+            this.Hide();
+            mainWindow.Show();
         }
     }
 }

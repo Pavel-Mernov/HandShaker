@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HandShaker.UserLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,7 +51,7 @@ namespace HandShaker
 
         private void btnGoToProfile_Click(object sender, RoutedEventArgs e)
         {
-            var profileWindow = new ProfileWindow();
+            var profileWindow = new ProfileWindow(User.ExampleUser);
             this.Hide();
             profileWindow.Show();
         }
