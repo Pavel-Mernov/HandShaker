@@ -58,18 +58,13 @@
                         Orientation="Vertical"
                         HorizontalAlignment="Center"
                         CanVerticallyScroll="True">
-                            <userlib:User
-                            x:Name="user"/>
-
 
                             <!-- Avatar Image itself -->
                             <Image
-                            x:Name="avatarImage"
-                            Width="200"
-                            Height="200"
-                            Stretch="UniformToFill"
-    
-                            Source="/UserLib/PhotoMeCaucasus.jpg">
+                                x:Name="avatarImage"
+                                Width="200"
+                                Height="200"
+                                Stretch="UniformToFill">
                                 <Image.Clip>
                                     <EllipseGeometry Center="100,100" RadiusX="100" RadiusY="100"/>
                                 </Image.Clip>
@@ -91,19 +86,19 @@
                             VerticalAlignment="Bottom"
                             HorizontalAlignment="Center">
                                 <TextBlock
-                                FontSize="18"
-                                VerticalAlignment="Bottom"
-                                FontWeight="SemiBold"
-                                Foreground="{StaticResource DarkGray}"
-                                HorizontalAlignment="Center"
-                                Text="Имя:"/>
+                                    FontSize="18"
+                                    VerticalAlignment="Bottom"
+                                    FontWeight="SemiBold"
+                                    Foreground="{StaticResource DarkGray}"
+                                    HorizontalAlignment="Center"
+                                    Text="Имя:"/>
 
                                 <TextBlock
-                                FontSize="32"
-                                FontWeight="SemiBold"
-                                HorizontalAlignment="Center"
-                                Text="Павел Мернов"
-                                Margin="10, 0"/>
+                                    x:Name="tbName"
+                                    FontSize="32"
+                                    FontWeight="SemiBold"
+                                    HorizontalAlignment="Center"
+                                    Margin="10, 0"/>
                             </StackPanel>
 
 
@@ -122,76 +117,76 @@
                                 Text="Компания:"/>
 
                                 <TextBlock
-                                FontSize="32"
-                                HorizontalAlignment="Center"
-                                FontWeight="SemiBold"
-                                Text="HandShaker Inc."
-                                Margin="10, 0"/>
+                                    x:Name="tbCompany"
+                                    FontSize="32"
+                                    HorizontalAlignment="Center"
+                                    FontWeight="SemiBold"
+                                    Margin="10, 0"/>
                             </StackPanel>
 
                             <StackPanel
-                            Orientation="Vertical"
-                            Margin="0, 10"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Bottom">
+                                Orientation="Vertical"
+                                Margin="0, 10"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Bottom">
                                 <TextBlock
-                                FontSize="20"
-                                VerticalAlignment="Bottom"
-                                HorizontalAlignment="Center"
-                                FontWeight="SemiBold"
-                                Foreground="{StaticResource DarkGray}"
-                                Text="Должность:"/>
+                                    FontSize="20"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Center"
+                                    FontWeight="SemiBold"
+                                    Foreground="{StaticResource DarkGray}"
+                                    Text="Должность:"/>
 
                                 <TextBlock
-                                FontSize="32"
-                                HorizontalAlignment="Center"
-                                FontWeight="SemiBold"
-                                Text="Junior C#-разработчик"
-                                Margin="10, 0"/>
+                                    x:Name="tbPosition"
+                                    FontSize="32"
+                                    HorizontalAlignment="Center"
+                                    FontWeight="SemiBold"
+                                    Margin="10, 0"/>
                             </StackPanel>
 
                             <StackPanel
-                            Orientation="Vertical"
-                            Margin="0, 18"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Bottom">
+                                Orientation="Vertical"
+                                Margin="0, 18"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Bottom">
                                 <TextBlock
-                                FontSize="20"
-                                VerticalAlignment="Bottom"
-                                HorizontalAlignment="Center"
-                                FontWeight="SemiBold"
-                                Foreground="{StaticResource DarkGray}"
-                                Text="Почта:"/>
+                                    FontSize="20"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Center"
+                                    FontWeight="SemiBold"
+                                    Foreground="{StaticResource DarkGray}"
+                                    Text="Почта:"/>
 
                                 <TextBlock
-                                FontSize="26"
-                                HorizontalAlignment="Center"
-                                FontWeight="SemiBold"
-                                Text="pavel_mernov@handshaker.org"
-                                Margin="10, 0"/>
+                                    x:Name="tbEmail"
+                                    FontSize="26"
+                                    HorizontalAlignment="Center"
+                                    FontWeight="SemiBold"
+                                    Margin="10, 0"/>
                             </StackPanel>
 
                             <StackPanel
-                            Orientation="Vertical"
-                            Margin="0, 18"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Bottom">
+                                Orientation="Vertical"
+                                Margin="0, 18"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Bottom">
                                 <TextBlock
-                                FontSize="20"
-                                VerticalAlignment="Bottom"
-                                HorizontalAlignment="Center"
-                                FontWeight="SemiBold"
-                                Foreground="{StaticResource DarkGray}"
-                                Text="Пароль:"/>
+                                    FontSize="20"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Center"
+                                    FontWeight="SemiBold"
+                                    Foreground="{StaticResource DarkGray}"
+                                    Text="Пароль:"/>
 
                                 <PasswordBox
-                                BorderThickness="0"
-                                Focusable="False"
-                                FontSize="32"
-                                HorizontalAlignment="Center"
-                                FontWeight="SemiBold"
-                                Password="1111111111"
-                                Margin="10, 0"/>
+                                    x:Name="passwordBox"
+                                    BorderThickness="0"
+                                    Focusable="False"
+                                    FontSize="32"
+                                    HorizontalAlignment="Center"
+                                    FontWeight="SemiBold"
+                                    Margin="10, 0"/>
 
                                 <Button
                                 x:Name="btnChangePassword"

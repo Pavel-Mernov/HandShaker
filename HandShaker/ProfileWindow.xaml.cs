@@ -20,11 +20,19 @@ namespace HandShaker
     /// </summary>
     public partial class ProfileWindow : Window
     {
+        public User User { get; private set; }
 
         public ProfileWindow(User user)
         {
             InitializeComponent();
-            this.user = user;
+            this.User = user;
+
+            tbName.Text = User.UserName;
+            tbCompany.Text = User.Company;
+            tbPosition.Text = User.Position;
+            tbEmail.Text = User.Email;
+            passwordBox.Password = User.PasswordHash;
+            avatarImage.Source = User.ImageSource;
 
             /*
             var binding = new Binding()
