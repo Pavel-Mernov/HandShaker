@@ -1,0 +1,161 @@
+﻿<Window
+    x:Name="confirmationCodeWindow"
+    x:Class="HandShaker.ConfirmationCodeWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:HandShaker" xmlns:local1="clr-namespace:HandShaker.Assets.UniversalElements"
+    mc:Ignorable="d"
+    Title="ConfirmationCodeWindow" 
+    Height="324"
+    Width="432"
+    ResizeMode="NoResize"
+    AllowsTransparency="True"
+    WindowStyle="None"
+    WindowStartupLocation="CenterScreen">
+    <Border 
+        CornerRadius="0"
+        Background="{StaticResource BlankFilling}"
+        BorderThickness="3"
+        BorderBrush="{StaticResource BorderGray}"
+        >
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel
+                Grid.Row="2"
+                Orientation="Vertical"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                >
+
+                <!-- Enter login block -->
+
+
+                <TextBlock 
+                    FontSize="24"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Text="Код подтверждения"
+                    Foreground="{StaticResource DarkGray}"/>
+
+                <!-- Text Pannel for login Inputs -->
+                <StackPanel
+                    Orientation="Vertical"
+                    Margin="12"
+                    >
+
+                    <!-- Layout for enter confirmation code -->
+                    <StackPanel
+                    Orientation="Vertical"
+                    >
+
+                        <TextBlock
+                            FontSize="15"
+                            HorizontalAlignment="Center"
+                            FontWeight="SemiBold"
+                            Text="Вам на почту был отправлен код подтверждения."/>
+
+                        <TextBlock
+                            FontSize="15"
+                            HorizontalAlignment="Center"
+                            FontWeight="SemiBold"
+                            Text="Код актуален в течение: 10:00"/>
+
+                        <!-- Panel for login placeholder and password control -->
+                        <StackPanel
+                        HorizontalAlignment="Stretch"
+                        Orientation="Vertical"
+                        >
+                            <Border
+                                x:Name="codeBorder"
+                                BorderThickness="2"
+                                MouseDown="codeBorder_MouseDown"
+                                Margin="0, 15"
+                                BorderBrush="{StaticResource BorderGray}">
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Stretch"
+                                    
+                                    Height="30">
+                                    <TextBox
+                                        Name="txtConfirmationCode"
+                                    
+                                        Style="{StaticResource LoginPasswordControlStyle}" 
+                                        TextChanged="txtConfirmationCode_TextChanged"/>
+
+                                    <TextBlock
+                                        x:Name="loginPlaceholder"
+                                        Visibility="Visible"
+                                        FontSize="16"
+                                        Style="{StaticResource PlaceholderStyle}"
+                                        Text="Введите код подтверждения">
+                                        </TextBlock>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+
+
+
+                    </StackPanel>
+
+
+                    
+                    <!-- Button for entering the messenger app -->
+                    <local1:BlueButton
+                        x:Name="btnConfirm"
+                        Margin="0, 20, 0, 0"
+                        Tag="Подтвердить"
+                        Click="btnConfirm_Click"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Title Bar -->
+            <Border
+                x:Name="mainBorder"
+                Background="{StaticResource BorderGray}"
+                Grid.ColumnSpan="3"
+                Height="50"
+                MouseDown="mainBorder_MouseDown">
+                <Grid>
+
+                    <!-- Panel for Icon and app name -->
+                    <StackPanel
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="10, 0,0,0">
+
+                        <Image 
+                        Height="45"
+                        Source="/Assets/mainIcon.png"/>
+
+                        <TextBlock
+                        Text="{Binding Title, ElementName=enterWindow}"
+                        FontSize="30"
+                        FontWeight="SemiBold"
+                        Margin="10,0,0,0">
+                        </TextBlock>
+                    </StackPanel>
+
+                    <!-- Window Buttons-->
+                    <StackPanel
+                        HorizontalAlignment="Right"
+                        Margin="10, 0"
+                        Orientation="Horizontal">
+
+                        <local1:CloseWindowButton
+                            Window="{Binding ElementName=confirmationCodeWindow}"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+
+        </Grid>
+    </Border>
+</Window>

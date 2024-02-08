@@ -45,7 +45,8 @@ namespace HandShaker
         // Click here if you forgot password
         private void btnForgotPassword_Click(object sender, RoutedEventArgs e)
         {
-            
+            var confirmationCodeWindow = new ConfirmationCodeWindow();
+            confirmationCodeWindow.Show();
         }
 
         private void txtLogin_TextChanged(object sender, TextChangedEventArgs e)

@@ -62,7 +62,8 @@ namespace HandShaker
 
         private void btnChangePassword_Click(object sender, RoutedEventArgs e)
         {
-
+            var confirmationCodeWindow = new ConfirmationCodeWindow();
+            confirmationCodeWindow.Show();
         }
 
         // Close this window and go back to messenger window
