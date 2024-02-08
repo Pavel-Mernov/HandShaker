@@ -1,4 +1,5 @@
 ﻿using HandShaker.Properties;
+using HandShaker.UserLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,8 +76,10 @@ namespace HandShaker
 
         private void btnEnter_Click(object sender, RoutedEventArgs e)
         {
-            var mainWindow = new MainWindow();
-            this.Visibility = Visibility.Hidden;
+            var user = User.ExampleAdmin;
+
+            var mainWindow = new MainWindow(user);
+            this.Hide();
 
             mainWindow.Show();
         }

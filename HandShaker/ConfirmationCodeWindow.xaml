@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:HandShaker" xmlns:local1="clr-namespace:HandShaker.Assets.UniversalElements"
     mc:Ignorable="d"
-    Title="ConfirmationCodeWindow" 
+    Title="HandShaker" 
     Height="324"
     Width="432"
     ResizeMode="NoResize"
@@ -136,7 +136,7 @@
                         Source="/Assets/mainIcon.png"/>
 
                         <TextBlock
-                        Text="{Binding Title, ElementName=enterWindow}"
+                        Text="{Binding Title, ElementName=confirmationCodeWindow}"
                         FontSize="30"
                         FontWeight="SemiBold"
                         Margin="10,0,0,0">

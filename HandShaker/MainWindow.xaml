@@ -96,7 +96,7 @@
                                         FontWeight="SemiBold"
                                         VerticalContentAlignment="Center"
                                         HorizontalContentAlignment="Left"
-                                        Content="Search"
+                                        Content="Поиск"
                                         MouseDown="lblSearch_MouseDown"/>
                                 </StackPanel>
                             </Border>

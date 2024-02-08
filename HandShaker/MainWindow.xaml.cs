@@ -21,9 +21,12 @@ namespace HandShaker
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private User user_;
+
+        public MainWindow(User user)
         {
             InitializeComponent();
+            user_ = user;
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -51,7 +54,17 @@ namespace HandShaker
 
         private void btnGoToProfile_Click(object sender, RoutedEventArgs e)
         {
-            var profileWindow = new ProfileWindow(User.ExampleUser);
+            Window profileWindow;
+
+            if (user_.UserType == UserType.User)
+            {
+                profileWindow = new ProfileWindow(user_);
+            }
+            else
+            {
+                profileWindow = new AdminProfileWindow(user_);
+            }
+
             this.Hide();
             profileWindow.Show();
         }

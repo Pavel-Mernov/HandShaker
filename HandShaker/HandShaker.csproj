@@ -73,6 +73,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminProfileWindow.xaml.cs">
+      <DependentUpon>AdminProfileWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Assets\UniversalElements\CloseWindowButton.cs" />
     <Compile Include="ConfirmationCodeWindow.xaml.cs">
       <DependentUpon>ConfirmationCodeWindow.xaml</DependentUpon>
@@ -80,8 +83,16 @@
     <Compile Include="ProfileWindow.xaml.cs">
       <DependentUpon>ProfileWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserLib\Chat.cs" />
+    <Compile Include="UserLib\Message.cs" />
+    <Compile Include="UserLib\ReadStatus.cs" />
     <Compile Include="UserLib\User.cs" />
+    <Compile Include="UserLib\UserType.cs" />
     <Compile Include="WebSocket\Client.cs" />
+    <Page Include="AdminProfileWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Assets\ColorResources\Colors.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -1,5 +1,5 @@
-﻿<Window x:Class="HandShaker.ProfileWindow"
-        x:Name="profileWindow"
+﻿<Window x:Class="HandShaker.AdminProfileWindow"
+        x:Name="adminProfileWindow"
         AllowsTransparency="True"
         WindowStyle="None"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -31,7 +31,7 @@
                 <!-- The whole one column -->
 
             </Grid.ColumnDefinitions>
-            
+
             <!-- Profile information Area -->
             <Grid
                 
@@ -73,20 +73,20 @@
                             </Image>
 
                             <Button
-                            x:Name="btnChangePhoto"
-                            Background="Transparent"
-                            BorderThickness="0"
-                            Foreground="{StaticResource ButtonBlue}"
-                            Margin="0, 10"
-                            FontSize="25"
-                            Content="Изменить"
-                            Click="btnChangePhoto_Click"/>
+                                x:Name="btnChangePhoto"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Foreground="{StaticResource ButtonBlue}"
+                                Margin="0, 10"
+                                FontSize="25"
+                                Content="Изменить"
+                                Click="btnChangePhoto_Click"/>
 
                             <StackPanel
-                            Orientation="Horizontal"
-                            Margin="0, 15"
-                            VerticalAlignment="Bottom"
-                            HorizontalAlignment="Center">
+                                Orientation="Horizontal"
+                                Margin="0, 15"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Center">
                                 <TextBlock
                                     FontSize="18"
                                     VerticalAlignment="Bottom"
@@ -111,12 +111,12 @@
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Bottom">
                                 <TextBlock
-                                FontSize="20"
-                                VerticalAlignment="Bottom"
-                                HorizontalAlignment="Center"
-                                FontWeight="SemiBold"
-                                Foreground="{StaticResource DarkGray}"
-                                Text="Компания:"/>
+                                    FontSize="20"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Center"
+                                    FontWeight="SemiBold"
+                                    Foreground="{StaticResource DarkGray}"
+                                    Text="Компания:"/>
 
                                 <TextBlock
                                     x:Name="tbCompany"
@@ -126,6 +126,7 @@
                                     Margin="10, 0"/>
                             </StackPanel>
 
+                            <!-- Stack panel for position -->
                             <StackPanel
                                 Orientation="Vertical"
                                 Margin="0, 10"
@@ -146,6 +147,86 @@
                                     FontWeight="SemiBold"
                                     Margin="10, 0"/>
                             </StackPanel>
+                            
+                            <!-- Stack pannel for adding new user -->
+                            <StackPanel
+                                Orientation="Horizontal"
+                                
+                                x:Name="userAddPanel"
+                                MouseEnter="userAddPanel_MouseEnter"
+                                MouseLeave="userAddPanel_MouseLeave"
+                                MouseDown="userAddPanel_MouseDown">
+
+                                <Button 
+                                    x:Name="imgAddUser"
+                                    Style="{StaticResource IconButtonStyle}"
+                                    Foreground="Green"
+                                    Content="{StaticResource addSign}"/>
+
+                                <TextBlock
+                                    x:Name="tbAddUser"
+                                    Margin="20"
+                                    FontWeight="SemiBold"
+                                    FontSize="20"
+                                    Foreground="Black"
+                                    Text="Добавить пользователя"/>
+                            </StackPanel>
+
+                            <!-- Search Field -->
+                            <Grid
+                                Width="500">
+                                <Border
+                                    x:Name="borderSearchUserPanel"
+                                    BorderBrush="{StaticResource BorderGray}"
+                                    BorderThickness="3"
+                                    CornerRadius="15"
+                                    Padding="10"
+                                    Background="{StaticResource LightGrayFilling}"
+                                    MouseDown="borderSearchUserPanel_MouseDown">            
+
+                                    <!-- Panel for search icon and textInput -->
+                                    <StackPanel
+                                        Orientation="Horizontal"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+            
+                                        >
+
+                                        <!-- Search Icon -->
+                                        <Button
+                                            x:Name="btnIconSearch"
+                                            VerticalContentAlignment="Center"
+                                            Foreground="{StaticResource DarkGray}"
+                                            Style="{StaticResource IconButtonStyle}"
+                                            Content="{StaticResource search}"/>
+
+
+
+                                        <!-- Input Control for Chat Name -->
+                                        <TextBox
+                                            x:Name="txtSearchUser"
+                                            FontSize="28"
+                                            Margin="10, 0, 0, 0"
+                                            FontWeight="SemiBold"
+                                            Foreground="{StaticResource DarkGray}"
+                                            VerticalContentAlignment="Center"
+                                            BorderThickness="0"
+                                            Background="Transparent"
+                                            TextChanged="txtSearchUser_TextChanged"/>
+
+                                        <!-- Text Label for search -->
+                                        <Label
+                                            x:Name="lblSearchUser"
+                                            Foreground="{StaticResource DarkGray}"
+                                            FontSize="28"
+                                            FontWeight="SemiBold"
+                                            VerticalContentAlignment="Center"
+                                            HorizontalContentAlignment="Left"
+                                            Content="Найти пользователя"
+                                            MouseDown="borderSearchUserPanel_MouseDown"/>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
 
                             <StackPanel
                                 Orientation="Vertical"
@@ -201,16 +282,16 @@
                             </StackPanel>
 
                             <universalelements:BlueButton
-                            x:Name="btnGoToMessages"
-                            Margin="0, 20"
-                            Tag="Перейти к сообщениям"
-                            Click="btnGoToMessages_Click"/>
+                                x:Name="btnGoToMessages"
+                                Margin="0, 20"
+                                Tag="Перейти к сообщениям"
+                                Click="btnGoToMessages_Click"/>
                         </StackPanel>
                     </ScrollViewer>
                     <!-- Stack panel for user attributes -->
 
-                    
-                    
+
+
                 </Border>
             </Grid>
 
@@ -233,7 +314,7 @@
                             Source="/Assets/mainIcon.png"/>
 
                         <TextBlock
-                            Text="{Binding Title, ElementName=profileWindow}"
+                            Text="{Binding Title, ElementName=adminProfileWindow}"
                             FontSize="30"
                             FontWeight="Bold"
                             Margin="10,0,0,0">
@@ -245,9 +326,9 @@
                         HorizontalAlignment="Right"
                         Margin="10, 0"
                         Orientation="Horizontal">
-                        <universalelements:MinimizeButton Window="{Binding ElementName=profileWindow}"/>
+                        <universalelements:MinimizeButton Window="{Binding ElementName=adminProfileWindow}"/>
 
-                        <universalelements:MaximizeButton Window="{Binding ElementName=profileWindow}"/>
+                        <universalelements:MaximizeButton Window="{Binding ElementName=adminProfileWindow}"/>
 
                         <universalelements:CloseButton/>
                     </StackPanel>

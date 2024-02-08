@@ -69,7 +69,7 @@ namespace HandShaker
         // Close this window and go back to messenger window
         private void btnGoToMessages_Click(object sender, RoutedEventArgs e)
         {
-            var mainWindow = new MainWindow();
+            var mainWindow = new MainWindow(User);
             this.Hide();
             mainWindow.Show();
         }
