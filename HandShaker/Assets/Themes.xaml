@@ -156,6 +156,25 @@
         </Setter>
     </Style>
 
-    
+    <!-- Style for searchBox -->
+    <Style 
+        x:Key="SearchBoxStyle"
+        TargetType="{x:Type Control}">
+        <Setter Property="Height" Value="60"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border
+                        BorderBrush="{StaticResource BorderGray}"
+                        BorderThickness="3"
+                        CornerRadius="30">
+                        
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 </ResourceDictionary>
