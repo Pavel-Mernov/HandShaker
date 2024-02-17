@@ -117,17 +117,21 @@
             <StackPanel
                 x:Name="ChatPanel"
                 Grid.Row="2"
-                Grid.Column="1"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Orientation="Vertical"
+                Grid.Column="2"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
                 >
-
-                <Image Source="/Assets/mainIcon.png"
+                <Border
+                    BorderThickness="3"
+                    BorderBrush="{StaticResource BorderGray}"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch">
+                    <Image Source="/Assets/mainIcon.png"
                        Height="200"
                        x:Name="imgChatViewProxy"
                        />
-            </StackPanel>
+                </Border>
+            </Grid>
             
             <!-- Title Bar -->
             <Border 
