@@ -22,8 +22,8 @@ namespace HandShaker
     public partial class EnterWindow : Window
     {
         // string constants
-        private static readonly string _enterLoginText = "Введите логин";
-        private static readonly string _enterPasswordText = "Введите пароль";
+        // private static readonly string _enterLoginText = "Введите логин";
+        // private static readonly string _enterPasswordText = "Введите пароль";
 
 
 

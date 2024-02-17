@@ -50,7 +50,14 @@ namespace HandShaker
         {
             if (e.ChangedButton == MouseButton.Left)
             {
-                DragMove();
+                try
+                {
+                    DragMove();
+                }
+                catch (InvalidOperationException)
+                {
+
+                }
             }
         }
 
@@ -63,7 +70,7 @@ namespace HandShaker
 
         private void userAddPanel_MouseEnter(object sender, MouseEventArgs e)
         {
-            txtSearchUser.Focus();
+            
         }
 
         private void userAddPanel_MouseLeave(object sender, MouseEventArgs e)
@@ -78,7 +85,7 @@ namespace HandShaker
 
         private void borderSearchUserPanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            txtSearchUser.Focus();
         }
 
         private void txtSearchUser_TextChanged(object sender, TextChangedEventArgs e)
@@ -91,6 +98,11 @@ namespace HandShaker
             {
                 lblSearchUser.Visibility = Visibility.Hidden;
             }
+        }
+
+		private void lblSearchUser_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+            txtSearchUser.Focus();
         }
     }
 }

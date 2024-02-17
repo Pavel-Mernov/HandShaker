@@ -2,6 +2,7 @@
         x:Name="adminProfileWindow"
         AllowsTransparency="True"
         WindowStyle="None"
+        WindowState="Maximized"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -172,25 +173,25 @@
                                     Text="Добавить пользователя"/>
                             </StackPanel>
 
-                            <!-- Search Field -->
+                            <!-- User Search Field -->
                             <Grid
-                                Width="500">
+                            >
                                 <Border
-                                    x:Name="borderSearchUserPanel"
+                                    x:Name="borderSearchPanel"
                                     BorderBrush="{StaticResource BorderGray}"
                                     BorderThickness="3"
                                     CornerRadius="15"
                                     Padding="10"
                                     Background="{StaticResource LightGrayFilling}"
-                                    MouseDown="borderSearchUserPanel_MouseDown">            
+                                    MouseDown="borderSearchUserPanel_MouseDown">
 
                                     <!-- Panel for search icon and textInput -->
                                     <StackPanel
-                                        Orientation="Horizontal"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Left"
-            
-                                        >
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    
+                                    >
 
                                         <!-- Search Icon -->
                                         <Button
@@ -212,7 +213,8 @@
                                             VerticalContentAlignment="Center"
                                             BorderThickness="0"
                                             Background="Transparent"
-                                            TextChanged="txtSearchUser_TextChanged"/>
+                                            TextChanged="txtSearchUser_TextChanged"
+                                            MouseDown="borderSearchUserPanel_MouseDown"/>
 
                                         <!-- Text Label for search -->
                                         <Label
@@ -222,8 +224,8 @@
                                             FontWeight="SemiBold"
                                             VerticalContentAlignment="Center"
                                             HorizontalContentAlignment="Left"
-                                            Content="Найти пользователя"
-                                            MouseDown="borderSearchUserPanel_MouseDown"/>
+                                            Content="Поиск"
+                                            MouseDown="lblSearchUser_MouseDown"/>
                                     </StackPanel>
                                 </Border>
                             </Grid>

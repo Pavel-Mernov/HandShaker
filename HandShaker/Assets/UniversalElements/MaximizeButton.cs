@@ -31,14 +31,7 @@ namespace HandShaker.Assets.UniversalElements
 
         private void MaximizeButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (Window.WindowState == WindowState.Normal)
-            {
-                Window.WindowState = WindowState.Maximized;
-            }
-            else
-            {
-                Window.WindowState = WindowState.Normal;
-            }
+            Window.WindowState = WindowState.Maximized;
         }
 
 
