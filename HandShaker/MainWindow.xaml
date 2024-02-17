@@ -29,114 +29,15 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/> <!-- Column for contact chat list -->
-                <ColumnDefinition /> <!-- Conversation area -->
+                <!-- Only one column -->
+                <ColumnDefinition />  
                 
             </Grid.ColumnDefinitions>
 
-            <Grid
-                Grid.Row="1"
-                Width="400"
-                
-                >
-                <Border
-                    BorderBrush="{StaticResource BorderGray}"
-                    BorderThickness="3"
-                    Padding="20, 20, 20, 20">
-
-                    <StackPanel
-                        Orientation="Vertical">
-                        
-                        <!-- Search Field -->
-                        <Grid
-                            >
-                            <Border
-                                x:Name="borderSearchPanel"
-                                BorderBrush="{StaticResource BorderGray}"
-                                BorderThickness="3"
-                                CornerRadius="15"
-                                Padding="10"
-                                Background="{StaticResource LightGrayFilling}"
-                                MouseDown="borderSearchPanel_MouseDown">
-                                
-                                <!-- Panel for search icon and textInput -->
-                                <StackPanel
-                                    Orientation="Horizontal"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Left"
-                                    
-                                    >
-                                    
-                                    <!-- Search Icon -->
-                                    <Button
-                                        x:Name="btnIconSearch"
-                                        VerticalContentAlignment="Center"
-                                        Foreground="{StaticResource DarkGray}"
-                                        Style="{StaticResource IconButtonStyle}"
-                                        Content="{StaticResource search}"/>
-                                    
-                                    
-
-                                    <!-- Input Control for Chat Name -->
-                                    <TextBox
-                                        x:Name="txtSearchChat"
-                                        FontSize="28"
-                                        Margin="10, 0, 0, 0"
-                                        FontWeight="SemiBold"
-                                        Foreground="{StaticResource DarkGray}"
-                                        VerticalContentAlignment="Center"
-                                        BorderThickness="0"
-                                        Background="Transparent"
-                                        TextChanged="TextBox_TextChanged"/>
-                                    
-                                    <!-- Text Label for search -->
-                                    <Label
-                                        x:Name="lblSearch"
-                                        Foreground="{StaticResource DarkGray}"
-                                        FontSize="28"
-                                        FontWeight="SemiBold"
-                                        VerticalContentAlignment="Center"
-                                        HorizontalContentAlignment="Left"
-                                        Content="Поиск"
-                                        MouseDown="lblSearch_MouseDown"/>
-                                </StackPanel>
-                            </Border>
-                        </Grid>
-
-                        <!-- Go to profile Button -->
-                        <universalelements:BlueButton
-                            Margin="0, 20"
-                            x:Name="btnGoToProfile"
-                            Tag="Перейти в профиль"
-                            Click="btnGoToProfile_Click"/>
-                    </StackPanel>
-                    
-                </Border>
-            </Grid>
-
-            <StackPanel
-                x:Name="ChatPanel"
-                Grid.Row="2"
-                Grid.Column="2"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                >
-                <Border
-                    BorderThickness="3"
-                    BorderBrush="{StaticResource BorderGray}"
-                    VerticalAlignment="Stretch"
-                    HorizontalAlignment="Stretch">
-                    <Image Source="/Assets/mainIcon.png"
-                       Height="200"
-                       x:Name="imgChatViewProxy"
-                       />
-                </Border>
-            </Grid>
-            
             <!-- Title Bar -->
             <Border 
                 Background="{StaticResource BorderGray}"
-                Grid.ColumnSpan="3"
+                Grid.Row="0"
                 Height="50"
                 MouseDown="Border_MouseDown">
                 <Grid>
@@ -173,7 +74,61 @@
                 </Grid>
             </Border>
             
-            
+            <!-- Contact list and chats -->
+            <Grid
+                Grid.Row="1"
+                >
+                <Grid.RowDefinitions>
+                    <!-- Only one row below the title bar -->
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <!-- Column for chat search box, chats list and Btn Go To Profile -->
+                    <ColumnDefinition Width="Auto"/>
+                    
+                    <!-- Column for current chat or Logo, if a chat not selected -->
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Border
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Width="330"
+                    VerticalAlignment="Stretch"
+                    BorderBrush="{StaticResource BorderGray}"
+                    BorderThickness="3"
+                    Padding="10"
+                    >
+                    <StackPanel
+                        Orientation="Vertical"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
+
+                        <universalelements:SearchBox
+                            Tag="Поиск"
+                            />
+                    </StackPanel>
+                </Border>
+                
+                <!-- Border for current chat or for a logo -->
+                <Border
+                    x:Name="curChatBorder"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    BorderBrush="{StaticResource BorderGray}"
+                    BorderThickness="3">
+                    <Image
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Source="/Assets/mainIcon.png"
+                        Width="200"
+                        Height="200"/>
+
+                </Border>
+            </Grid>
         </Grid>
     </Border>
 </Window>

@@ -69,27 +69,7 @@ namespace HandShaker
             profileWindow.Show();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtSearchChat.Text))
-            {
-                lblSearch.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                lblSearch.Visibility = Visibility.Hidden;
-            }
-        }
-
-        private void lblSearch_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            txtSearchChat.Focus();
-        }
-
-        private void borderSearchPanel_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            txtSearchChat.Focus();
-        }
+        
 
 
     }

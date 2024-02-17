@@ -7,9 +7,9 @@ using System.Windows.Controls;
 
 namespace HandShaker.Assets.UniversalElements
 {
-	internal class SearchGrid : Grid
+	internal class SearchBox : TextBox
 	{
-		public SearchGrid()
+		public SearchBox()
 		{
 
 		}

@@ -77,7 +77,7 @@
       <DependentUpon>AdminProfileWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Assets\UniversalElements\CloseWindowButton.cs" />
-    <Compile Include="Assets\UniversalElements\SearchGrid.cs" />
+    <Compile Include="Assets\UniversalElements\SearchBox.cs" />
     <Compile Include="ConfirmationCodeWindow.xaml.cs">
       <DependentUpon>ConfirmationCodeWindow.xaml</DependentUpon>
     </Compile>
