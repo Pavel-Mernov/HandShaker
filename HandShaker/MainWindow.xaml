@@ -34,85 +34,25 @@
                 
             </Grid.ColumnDefinitions>
 
-            <Grid
-                Grid.Row="1"
-                Width="400"
-                
+            <StackPanel
+                Grid.Column="1"
+                Orientation="Vertical"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Left"
+                Width="120"
                 >
                 <Border
                     BorderBrush="{StaticResource BorderGray}"
                     BorderThickness="3"
-                    Padding="20, 20, 20, 20">
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch">
 
-                    <StackPanel
-                        Orientation="Vertical">
-                        
-                        <!-- Search Field -->
-                        <Grid
-                            >
-                            <Border
-                                x:Name="borderSearchPanel"
-                                BorderBrush="{StaticResource BorderGray}"
-                                BorderThickness="3"
-                                CornerRadius="15"
-                                Padding="10"
-                                Background="{StaticResource LightGrayFilling}"
-                                MouseDown="borderSearchPanel_MouseDown">
-                                
-                                <!-- Panel for search icon and textInput -->
-                                <StackPanel
-                                    Orientation="Horizontal"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Left"
-                                    
-                                    >
-                                    
-                                    <!-- Search Icon -->
-                                    <Button
-                                        x:Name="btnIconSearch"
-                                        VerticalContentAlignment="Center"
-                                        Foreground="{StaticResource DarkGray}"
-                                        Style="{StaticResource IconButtonStyle}"
-                                        Content="{StaticResource search}"/>
-                                    
-                                    
-
-                                    <!-- Input Control for Chat Name -->
-                                    <TextBox
-                                        x:Name="txtSearchChat"
-                                        FontSize="28"
-                                        Margin="10, 0, 0, 0"
-                                        FontWeight="SemiBold"
-                                        Foreground="{StaticResource DarkGray}"
-                                        VerticalContentAlignment="Center"
-                                        BorderThickness="0"
-                                        Background="Transparent"
-                                        TextChanged="TextBox_TextChanged"/>
-                                    
-                                    <!-- Text Label for search -->
-                                    <Label
-                                        x:Name="lblSearch"
-                                        Foreground="{StaticResource DarkGray}"
-                                        FontSize="28"
-                                        FontWeight="SemiBold"
-                                        VerticalContentAlignment="Center"
-                                        HorizontalContentAlignment="Left"
-                                        Content="Поиск"
-                                        MouseDown="lblSearch_MouseDown"/>
-                                </StackPanel>
-                            </Border>
-                        </Grid>
-
-                        <!-- Go to profile Button -->
-                        <universalelements:BlueButton
-                            Margin="0, 20"
-                            x:Name="btnGoToProfile"
-                            Tag="Перейти в профиль"
-                            Click="btnGoToProfile_Click"/>
-                    </StackPanel>
-                    
+                    <TextBlock
+                        Text="Hello"
+                        FontSize="20"
+                        HorizontalAlignment="Center"/>
                 </Border>
-            </Grid>
+            </StackPanel>
 
             <StackPanel
                 x:Name="ChatPanel"

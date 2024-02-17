@@ -37,21 +37,6 @@ namespace HandShaker
             }
         }
 
-        private void btnMinimize_Click(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
-
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        private void btnSearch_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void btnGoToProfile_Click(object sender, RoutedEventArgs e)
         {
             Window profileWindow;
@@ -67,28 +52,6 @@ namespace HandShaker
 
             this.Hide();
             profileWindow.Show();
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtSearchChat.Text))
-            {
-                lblSearch.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                lblSearch.Visibility = Visibility.Hidden;
-            }
-        }
-
-        private void lblSearch_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            txtSearchChat.Focus();
-        }
-
-        private void borderSearchPanel_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            txtSearchChat.Focus();
         }
 
 

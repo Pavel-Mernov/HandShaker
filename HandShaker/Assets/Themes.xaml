@@ -156,6 +156,69 @@
         </Setter>
     </Style>
 
-    
+    <!-- Search panel grid style -->
+    <Style
+        x:Key="SearchPanelStyle"
+        TargetType="{x:Type TextBox}">
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid
+                        Height="60"
+                        VerticalAlignment="Center">
+                        <Border
+                            Name="borderSearchPanel"
+                            BorderBrush="{StaticResource BorderGray}"
+                            BorderThickness="3"
+                            CornerRadius="30"
+                            Padding="10"
+                            Background="{StaticResource LightGrayFilling}"
+                            >
+
+                            <!-- Panel for search icon and textInput -->
+                            <StackPanel
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                >
+
+                                <!-- Search Icon -->
+                                <Button
+                                    Name="btnIconSearch"
+                                    VerticalContentAlignment="Center"
+                                    Foreground="{StaticResource DarkGray}"
+                                    Style="{StaticResource IconButtonStyle}"
+                                    Content="{StaticResource search}"/>
+
+                                <!-- Input Control for Chat Name -->
+                                <TextBox
+                                        Name="txtSearch"
+                                        FontSize="28"
+                                        Margin="10, 0, 0, 0"
+                                        FontWeight="SemiBold"
+                                        Foreground="{StaticResource DarkGray}"
+                                        VerticalContentAlignment="Center"
+                                        BorderThickness="0"
+                                        Background="Transparent"/>
+
+                                <!-- Text Label for search -->
+                                <Label
+                                        Name="lblPlaceholder"
+                                        Foreground="{StaticResource DarkGray}"
+                                        FontSize="28"
+                                        FontWeight="SemiBold"
+                                        VerticalContentAlignment="Center"
+                                        HorizontalContentAlignment="Left"
+                                        />
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        
+    </Style>
 
 </ResourceDictionary>
