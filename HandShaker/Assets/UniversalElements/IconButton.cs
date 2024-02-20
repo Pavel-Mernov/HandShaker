@@ -1,12 +1,14 @@
-﻿using System;
+﻿using static HandShaker.Assets.ColorResources.Colors;
+using static HandShaker.Assets.ThemeResources.Templates;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Shapes;
+using System.Windows.Media;
 
 namespace HandShaker.Assets.UniversalElements
 {
@@ -18,13 +20,19 @@ namespace HandShaker.Assets.UniversalElements
         {
             Style = (Style)FindResource("IconButtonStyle");
 
+            BorderThickness = new Thickness(0);
+            Background = Transparent;
+            Height = Width = 50;
+
+
+
             MouseLeave += IconButton_MouseLeave;
         }
 
-        private void IconButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+		private void IconButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            Background = new SolidColorBrush(Colors.Transparent);
-            Foreground = new SolidColorBrush(Colors.Black);
+            Background = Transparent;
+            Foreground = Black;
         }
 
         public Window Window

@@ -22,7 +22,12 @@ namespace HandShaker.Assets.UniversalElements
             // Template = CreateTemplate();
         }
 
-        private void onClick(object sender, RoutedEventArgs args)
+		public override void OnApplyTemplate()
+		{
+			base.OnApplyTemplate();
+		}
+
+		private void onClick(object sender, RoutedEventArgs args)
         {
             Application.Current.Shutdown();
         }

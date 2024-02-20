@@ -173,62 +173,32 @@
                                     Text="Добавить пользователя"/>
                             </StackPanel>
 
-                            <!-- User Search Field -->
-                            <Grid
-                            >
-                                <Border
-                                    x:Name="borderSearchPanel"
-                                    BorderBrush="{StaticResource BorderGray}"
-                                    BorderThickness="3"
-                                    CornerRadius="15"
-                                    Padding="10"
-                                    Background="{StaticResource LightGrayFilling}"
-                                    MouseDown="borderSearchUserPanel_MouseDown">
+                            <StackPanel
+                                Orientation="Vertical"
+                                Width="400">
 
-                                    <!-- Panel for search icon and textInput -->
-                                    <StackPanel
-                                    Orientation="Horizontal"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Left"
-                                    
-                                    >
+                                <!-- User Search Field -->
+                                <universalelements:SearchBox
+                                    x:Name="UserSearchBox"
+                                    Height="70"
+                                    HorizontalAlignment="Stretch"
+                                    Tag="Найти пользователя"
+                                    MouseDown="SearchBox_MouseDown"/>
 
-                                        <!-- Search Icon -->
-                                        <Button
-                                            x:Name="btnIconSearch"
-                                            VerticalContentAlignment="Center"
-                                            Foreground="{StaticResource DarkGray}"
-                                            Style="{StaticResource IconButtonStyle}"
-                                            Content="{StaticResource search}"/>
+                                <ScrollViewer
+                                    VerticalScrollBarVisibility="Auto"
+                                    MaxHeight="100">
 
+                                    <Menu
+                                        x:Name="UsersMenu"
+                                        HorizontalAlignment="Stretch"
+                                        Template="{StaticResource UsersMenuTemplate}"
+                                        Visibility="Hidden">
 
-
-                                        <!-- Input Control for Chat Name -->
-                                        <TextBox
-                                            x:Name="txtSearchUser"
-                                            FontSize="28"
-                                            Margin="10, 0, 0, 0"
-                                            FontWeight="SemiBold"
-                                            Foreground="{StaticResource DarkGray}"
-                                            VerticalContentAlignment="Center"
-                                            BorderThickness="0"
-                                            Background="Transparent"
-                                            TextChanged="txtSearchUser_TextChanged"
-                                            MouseDown="borderSearchUserPanel_MouseDown"/>
-
-                                        <!-- Text Label for search -->
-                                        <Label
-                                            x:Name="lblSearchUser"
-                                            Foreground="{StaticResource DarkGray}"
-                                            FontSize="28"
-                                            FontWeight="SemiBold"
-                                            VerticalContentAlignment="Center"
-                                            HorizontalContentAlignment="Left"
-                                            Content="Поиск"
-                                            MouseDown="lblSearchUser_MouseDown"/>
-                                    </StackPanel>
-                                </Border>
-                            </Grid>
+                                    </Menu>
+                                </ScrollViewer>
+                                
+                            </StackPanel>
 
                             <StackPanel
                                 Orientation="Vertical"

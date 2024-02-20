@@ -11,7 +11,7 @@ namespace HandShaker.UserLib
     {
         public List<User> Members { get; private set; } = new List<User>();
 
-        private List<Message> messages_ = new List<Message>();
+        private readonly List<Message> messages_ = new List<Message>();
         public Chat(params User[] members)
         {
             Members = members.ToList();

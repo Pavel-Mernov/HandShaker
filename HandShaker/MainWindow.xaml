@@ -108,6 +108,25 @@
                         <universalelements:SearchBox
                             Tag="Поиск"
                             />
+
+                        <ScrollViewer 
+                            VerticalScrollBarVisibility="Auto"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch">
+                            <StackPanel
+                                x:Name="ChatListPanel"
+                                Orientation="Vertical"
+                                HorizontalAlignment="Stretch"/>
+                        </ScrollViewer>
+
+                        <universalelements:BlueButton
+                            x:Name="BtnGoToProfile"
+                            Margin="0, 20"
+                            Tag="Перейти в профиль"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Stretch"
+                            Click="BtnGoToProfile_Click"
+                            />
                     </StackPanel>
                 </Border>
                 

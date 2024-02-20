@@ -52,7 +52,7 @@ namespace HandShaker
 
         }
 
-        private void btnGoToProfile_Click(object sender, RoutedEventArgs e)
+        private void BtnGoToProfile_Click(object sender, RoutedEventArgs e)
         {
             Window profileWindow;
 

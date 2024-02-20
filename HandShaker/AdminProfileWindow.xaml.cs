@@ -1,4 +1,5 @@
-﻿using HandShaker.UserLib;
+﻿using HandShaker.Assets.UniversalElements;
+using HandShaker.UserLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,13 @@ namespace HandShaker
             tbEmail.Text = Admin.Email;
             passwordBox.Password = Admin.PasswordHash;
             avatarImage.Source = Admin.ImageSource;
+
+            var userList = Examples.Users.Where(user => user != admin);
+
+            foreach (var user in userList)
+            {
+                UsersMenu.Items.Add(new UserMenuItem(user));
+            }
         }
 
         private void btnChangePhoto_Click(object sender, RoutedEventArgs e)
@@ -80,29 +88,22 @@ namespace HandShaker
 
         private void userAddPanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
-        }
-
-        private void borderSearchUserPanel_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            txtSearchUser.Focus();
-        }
-
-        private void txtSearchUser_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtSearchUser.Text))
+            if (UsersMenu.Visibility == Visibility.Visible)
             {
-                lblSearchUser.Visibility = Visibility.Visible;
+                UsersMenu.Visibility = Visibility.Hidden;
             }
             else
             {
-                lblSearchUser.Visibility = Visibility.Hidden;
+                UsersMenu.Visibility = Visibility.Visible;
             }
         }
 
-		private void lblSearchUser_MouseDown(object sender, MouseButtonEventArgs e)
+		private void SearchBox_MouseDown(object sender, MouseButtonEventArgs e)
 		{
-            txtSearchUser.Focus();
-        }
-    }
+            var txtSearch = (TextBox)UserSearchBox.
+                Template.FindName("TxtSearch", UserSearchBox);
+
+            txtSearch.Focus();
+		}
+	}
 }
