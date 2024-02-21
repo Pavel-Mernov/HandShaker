@@ -79,9 +79,9 @@ namespace HandShaker
             var user = User.ExampleAdmin;
 
             var mainWindow = new MainWindow(user);
-            this.Hide();
 
             mainWindow.Show();
+            this.Hide();
         }
 
         private void loginBorder_MouseDown(object sender, MouseButtonEventArgs e)

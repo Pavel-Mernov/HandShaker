@@ -14,8 +14,9 @@ using System.Windows.Shapes;
 
 namespace HandShaker.Assets.ThemeResources
 {
-	public static class Templates
+	public class Templates : FrameworkElement
 	{
+		private static Templates instance = new Templates();
 		public static ControlTemplate IconButtonTemplate
 		{
 			get
@@ -47,9 +48,6 @@ namespace HandShaker.Assets.ThemeResources
 				"				Content = \"{StaticResource search}\"" +
 				"				/>" +
 				"			<Label " +
-				"				Name = \"LblPlaceholder\" " +
-				"				VerticalAlignment = \"Center\" " +
-				"				FontSize = \"30\" " +
 				"				FontWeight = \"SemiBold\" " +
 				"				Foreground = \"{StaticResource DarkGray}\" " +
 				"				Content = \"{TemplateBinding Tag}\" /> ";
@@ -81,6 +79,8 @@ namespace HandShaker.Assets.ThemeResources
 				buttonFactory.SetValue(Button.HeightProperty, 40.0);
 				buttonFactory.SetValue(Control.BackgroundProperty, Transparent);
 				buttonFactory.SetValue(Control.BorderThicknessProperty, new Thickness(0));
+				buttonFactory.SetValue(Control.ForegroundProperty, DarkGray);
+				buttonFactory.SetValue(Button.ContentProperty, instance.FindResource("search"));
 
 				var textBoxFactory = new FrameworkElementFactory(typeof(TextBox))
 				{
@@ -94,9 +94,19 @@ namespace HandShaker.Assets.ThemeResources
 				textBoxFactory.SetValue(Control.BackgroundProperty, Transparent);
 				textBoxFactory.SetValue(Control.BorderThicknessProperty, new Thickness(0));
 
+				var placeholderFactory = new FrameworkElementFactory(typeof(Label))
+				{
+					Name = "LblPlaceholder"
+				};
+				placeholderFactory.SetValue(FrameworkElement.NameProperty, placeholderFactory.Name);
+				placeholderFactory.SetValue(FrameworkElement.VerticalAlignmentProperty, VerticalAlignment.Center);
+				placeholderFactory.SetValue(Label.FontSizeProperty, 30.0);
+				placeholderFactory.SetValue(Label.FontWeightProperty, FontWeights.SemiBold);
+				placeholderFactory.SetValue(Label.ForegroundProperty, DarkGray);
+
 				panelFactory.AppendChild(buttonFactory);
 				panelFactory.AppendChild(textBoxFactory);
-
+				panelFactory.AppendChild(placeholderFactory);
 
 				borderFactory.AppendChild(panelFactory);
 

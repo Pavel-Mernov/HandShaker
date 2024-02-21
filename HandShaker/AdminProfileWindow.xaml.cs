@@ -39,8 +39,31 @@ namespace HandShaker
 
             foreach (var user in userList)
             {
-                UsersMenu.Items.Add(new UserMenuItem(user));
+                UsersMenuPanel.Children.Add(new UserMenuItem(user));
             }
+
+            // UserSearchBox.MouseDown += UserSearchBox_MouseDown;
+            UserSearchBox.BorderMouseDown += UserSearchBox_MouseDown;
+            UserSearchBox.BorderMouseDown += (s, e) => UserSearchBox.Focus();
+        }
+
+        private void UserSearchBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (MenuBorder.Visibility == Visibility.Visible)
+            {
+                MenuBorder.Visibility = Visibility.Collapsed;
+                UsersMenuPanel.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                MenuBorder.Visibility = Visibility.Visible;
+                UsersMenuPanel.Visibility = Visibility.Visible;
+            }
+        }
+
+        public override void OnApplyTemplate()
+        {
+            UserSearchBox = new SearchBox();
         }
 
         private void btnChangePhoto_Click(object sender, RoutedEventArgs e)
@@ -72,8 +95,10 @@ namespace HandShaker
         private void btnGoToMessages_Click(object sender, RoutedEventArgs e)
         {
             var mainWindow = new MainWindow(Admin);
-            this.Hide();
+
             mainWindow.Show();
+            this.Hide();
+            
         }
 
         private void userAddPanel_MouseEnter(object sender, MouseEventArgs e)
@@ -88,16 +113,19 @@ namespace HandShaker
 
         private void userAddPanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (UsersMenu.Visibility == Visibility.Visible)
+            if (MenuBorder.Visibility == Visibility.Visible)
             {
-                UsersMenu.Visibility = Visibility.Hidden;
+                MenuBorder.Visibility = Visibility.Hidden;
+                UsersMenuPanel.Visibility = Visibility.Hidden;
             }
             else
             {
-                UsersMenu.Visibility = Visibility.Visible;
+                MenuBorder.Visibility = Visibility.Visible;
+                UsersMenuPanel.Visibility = Visibility.Visible;
             }
         }
 
+        /*
 		private void SearchBox_MouseDown(object sender, MouseButtonEventArgs e)
 		{
             var txtSearch = (TextBox)UserSearchBox.
@@ -105,5 +133,6 @@ namespace HandShaker
 
             txtSearch.Focus();
 		}
+        */
 	}
 }

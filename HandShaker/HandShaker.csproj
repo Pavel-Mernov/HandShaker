@@ -80,6 +80,9 @@
     <Compile Include="Assets\UniversalElements\CloseWindowButton.cs" />
     <Compile Include="Assets\UniversalElements\SearchBox.cs" />
     <Compile Include="Assets\UniversalElements\UserMenuItem.cs" />
+    <Compile Include="Assets\Windows\OtherUserWindow.xaml.cs">
+      <DependentUpon>OtherUserWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ConfirmationCodeWindow.xaml.cs">
       <DependentUpon>ConfirmationCodeWindow.xaml</DependentUpon>
     </Compile>
@@ -106,6 +109,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Assets\Themes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Windows\OtherUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -203,6 +210,8 @@
     <Resource Include="UserLib\photoArtyom.jpg" />
     <Resource Include="UserLib\photoSergey.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="UserLib\photoAlexander.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

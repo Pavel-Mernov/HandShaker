@@ -165,7 +165,7 @@
             BorderThickness="3"
             BorderBrush="{StaticResource BorderGray}"
             Background="White"
-            CornerRadius="10, 10, 0, 0">
+            CornerRadius="0, 0, 10, 10">
             
         </Border>
     </ControlTemplate>
@@ -182,23 +182,25 @@
 
             <StackPanel
                 Orientation="Horizontal"
-                Height="40"
+                Height="50"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Stretch"
                 >
                 <Image
                     Name="AvatarImage"
+                    Margin="10,0,0,0"
                     VerticalAlignment="Center"
-                    Width="30"
-                    Height="30"
+                    Width="40"
+                    Height="40"
                     Stretch="UniformToFill">
                     <Image.Clip>
-                        <EllipseGeometry Center="15,15" RadiusX="15" RadiusY="15"/>
+                        <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
                     </Image.Clip>
                 </Image>
 
                 <TextBlock
                     Name="TxtBlockName"
+                    Margin="10,0,0,0"
                     VerticalAlignment="Center"
                     FontSize="30"
                     FontWeight="SemiBold"

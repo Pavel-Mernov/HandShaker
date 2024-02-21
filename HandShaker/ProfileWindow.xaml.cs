@@ -70,8 +70,9 @@ namespace HandShaker
         private void btnGoToMessages_Click(object sender, RoutedEventArgs e)
         {
             var mainWindow = new MainWindow(User);
-            this.Hide();
+            
             mainWindow.Show();
+            Hide();
         }
     }
 }

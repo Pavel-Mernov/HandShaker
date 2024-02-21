@@ -65,8 +65,8 @@ namespace HandShaker
                 profileWindow = new AdminProfileWindow(user_);
             }
 
-            this.Hide();
             profileWindow.Show();
+            this.Hide();
         }
 
         

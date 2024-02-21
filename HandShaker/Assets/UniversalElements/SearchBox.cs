@@ -23,6 +23,8 @@ namespace HandShaker.Assets.UniversalElements
 	*/
 	internal class SearchBox : ContentControl
 	{
+		private MouseButtonEventHandler _borderEventHandler;
+
 		private Border SearchBorder => (Border)Template.FindName("SearchBorder", this);
 
 		private Label LblPlaceholder => (Label)Template.FindName("LblPlaceholder", this);
@@ -30,6 +32,12 @@ namespace HandShaker.Assets.UniversalElements
 		private Button BtnSearchIcon => (Button)Template.FindName("BtnSearchIcon", this);
 
 		private TextBox TxtSearch => (TextBox)Template.FindName("TxtSearch", this);
+
+		public event MouseButtonEventHandler BorderMouseDown
+		{
+			add { _borderEventHandler += value; } 
+			remove { _borderEventHandler -= value; }
+		}
 		
 		public SearchBox()
 		{
@@ -41,6 +49,7 @@ namespace HandShaker.Assets.UniversalElements
 			MouseEnter += SearchBox_MouseEnter;
 			MouseLeave += SearchBox_MouseLeave;
 
+			MouseDown += (s, e) => Focus();
 		}
 
 		private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -58,13 +67,14 @@ namespace HandShaker.Assets.UniversalElements
 		public override void OnApplyTemplate()
 		{
 			BtnSearchIcon.Template = IconButtonTemplate;
-			
-			BtnSearchIcon.Visibility = Visibility.Visible;
-			BtnSearchIcon.Content = FindResource("search");
 
 			TxtSearch.TextChanged += TxtSearch_TextChanged;
 
-			SearchBorder.MouseDown += (sender, e) => Focus();
+			LblPlaceholder.Content = Tag;
+
+			SearchBorder.MouseDown += (s, e) => Focus();
+
+			SearchBorder.MouseDown += (s, e) => _borderEventHandler?.Invoke(s, e);
 		}
 
 		private void SearchBox_MouseLeave(object sender, MouseEventArgs e)
@@ -95,9 +105,13 @@ namespace HandShaker.Assets.UniversalElements
 		}
 
 
-		public new void Focus()
+		public new bool Focus()
 		{
-			TxtSearch.Focus();
+			if (TxtSearch == null)
+			{
+				return false;
+			}
+			return TxtSearch.Focus();
 		}
 	}
 }

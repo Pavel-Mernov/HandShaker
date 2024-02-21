@@ -183,19 +183,30 @@
                                     Height="70"
                                     HorizontalAlignment="Stretch"
                                     Tag="Найти пользователя"
-                                    MouseDown="SearchBox_MouseDown"/>
+                                    />
 
                                 <ScrollViewer
+                                    x:Name="UserMenuScrollViewer"
                                     VerticalScrollBarVisibility="Auto"
-                                    MaxHeight="100">
+                                    MaxHeight="160"
+                                    Visibility="Visible">
 
-                                    <Menu
-                                        x:Name="UsersMenu"
-                                        HorizontalAlignment="Stretch"
-                                        Template="{StaticResource UsersMenuTemplate}"
-                                        Visibility="Hidden">
+                                    <Border
+                                        x:Name="MenuBorder"
+                                        BorderThickness="3"
+                                        BorderBrush="{StaticResource BorderGray}"
+                                        CornerRadius="0, 0, 15, 15"
+                                        Visibility="Visible"
+                                        >
+                                        <StackPanel
+                                            x:Name="UsersMenuPanel"
+                                            HorizontalAlignment="Stretch"
+                                            Orientation="Vertical"
+                                            Visibility="Visible"
+                                            >
 
-                                    </Menu>
+                                        </StackPanel>
+                                    </Border>
                                 </ScrollViewer>
                                 
                             </StackPanel>
