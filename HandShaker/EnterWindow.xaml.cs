@@ -1,5 +1,6 @@
 ﻿using HandShaker.Properties;
 using HandShaker.UserLib;
+using HandShaker.UserLib.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,7 +77,8 @@ namespace HandShaker
 
         private void btnEnter_Click(object sender, RoutedEventArgs e)
         {
-            var user = User.ExampleAdmin;
+            var user = Examples.Admin;
+            user.Chats.AddRange(Examples.AdminChats);
 
             var mainWindow = new MainWindow(user);
 

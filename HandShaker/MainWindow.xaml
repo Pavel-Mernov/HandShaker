@@ -94,7 +94,7 @@
                 <Border
                     Grid.Row="0"
                     Grid.Column="0"
-                    Width="330"
+                    Width="450"
                     VerticalAlignment="Stretch"
                     BorderBrush="{StaticResource BorderGray}"
                     BorderThickness="3"
@@ -112,7 +112,9 @@
                         <ScrollViewer 
                             VerticalScrollBarVisibility="Auto"
                             HorizontalAlignment="Stretch"
-                            HorizontalContentAlignment="Stretch">
+                            HorizontalContentAlignment="Stretch"
+                            
+                            Margin="0, 20">
                             <StackPanel
                                 x:Name="ChatListPanel"
                                 Orientation="Vertical"
@@ -123,8 +125,9 @@
                             x:Name="BtnGoToProfile"
                             Margin="0, 20"
                             Tag="Перейти в профиль"
-                            VerticalAlignment="Bottom"
+                            
                             HorizontalAlignment="Stretch"
+                            VerticalAlignment="Bottom"
                             Click="BtnGoToProfile_Click"
                             />
                     </StackPanel>

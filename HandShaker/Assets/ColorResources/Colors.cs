@@ -33,5 +33,9 @@ namespace HandShaker.Assets.ColorResources
 
 		public static readonly Brush Transparent = 
             new SolidColorBrush(Color.FromArgb(0, 0xff, 0xff, 0xff));
-	}
+
+        public static readonly Brush LightGreen = (Brush)_instance.FindResource("LightGreen");
+
+        public static readonly Brush DarkGreen = (Brush)_instance.FindResource("DarkGreen");
+    }
 }

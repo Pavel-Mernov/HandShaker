@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HandShaker.UserLib
+namespace HandShaker.UserLib.Users
 {
-    public enum ReadStatus
+    public enum UserType
     {
-        Sent,
-        Received,
-        Seen,
+        User,
+        Admin
     }
 }

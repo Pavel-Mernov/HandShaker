@@ -1,5 +1,6 @@
 ﻿using HandShaker.Assets.UniversalElements;
 using HandShaker.UserLib;
+using HandShaker.UserLib.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;

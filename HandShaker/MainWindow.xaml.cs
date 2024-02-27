@@ -1,4 +1,6 @@
-﻿using HandShaker.UserLib;
+﻿using HandShaker.Assets.UniversalElements;
+using HandShaker.UserLib;
+using HandShaker.UserLib.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +29,7 @@ namespace HandShaker
         {
             InitializeComponent();
             user_ = user;
+            user_.Chats.ForEach(chat => { ChatListPanel.Children.Add(new ChatMenuItem(user, chat)); });
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)

@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using static HandShaker.Assets.IconResources.Icons;
 
 namespace HandShaker.Assets.UniversalElements
 {
@@ -14,7 +15,7 @@ namespace HandShaker.Assets.UniversalElements
     {
         public CloseWindowButton()
         {
-            Content = FindResource("close");
+            Content = Close;
 
             Click += CloseWindowButton_Click;
             MouseEnter += CloseWindowButton_MouseEnter;

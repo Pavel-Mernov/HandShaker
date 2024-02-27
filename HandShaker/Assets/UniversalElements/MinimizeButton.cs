@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using static HandShaker.Assets.IconResources.Icons;
 
 namespace HandShaker.Assets.UniversalElements
 {
@@ -14,7 +15,7 @@ namespace HandShaker.Assets.UniversalElements
             MouseEnter += MinimizeButton_MouseEnter;
             Click += MinimizeButton_Click;
 
-            Content = FindResource("minimize");
+            Content = Minimize;
 
             // Template = CreateTemplate();
         }

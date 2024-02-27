@@ -10,4 +10,6 @@
     <Brush x:Key="ButtonBlue">#1D94EB</Brush>
     <Brush x:Key="ButtonLightBlue">#3DBFFF</Brush>
     <Brush x:Key="ClosingButtonRed">#BF4040</Brush>
+    <Brush x:Key="LightGreen">#2AED2A</Brush>
+    <Brush x:Key="DarkGreen">#007A00</Brush>
 </ResourceDictionary>

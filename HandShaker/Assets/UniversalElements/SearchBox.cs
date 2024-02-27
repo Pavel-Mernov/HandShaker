@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
 using static System.Net.Mime.MediaTypeNames;
+using static HandShaker.Assets.IconResources.Icons;
 
 namespace HandShaker.Assets.UniversalElements
 {
@@ -41,7 +42,7 @@ namespace HandShaker.Assets.UniversalElements
 		
 		public SearchBox()
 		{
-			Template = Templates.SearchBoxTemplate;
+			Template = SearchBoxTemplate;
 
 			Height = 60;
 
@@ -71,6 +72,8 @@ namespace HandShaker.Assets.UniversalElements
 			TxtSearch.TextChanged += TxtSearch_TextChanged;
 
 			LblPlaceholder.Content = Tag;
+
+			BtnSearchIcon.Content = Search;
 
 			SearchBorder.MouseDown += (s, e) => Focus();
 

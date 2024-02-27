@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using static HandShaker.Assets.IconResources.Icons;
 
 namespace HandShaker.Assets.UniversalElements
 {
@@ -13,7 +14,7 @@ namespace HandShaker.Assets.UniversalElements
     {
         public MaximizeButton()
         {
-            Content = FindResource("maximize");
+            Content = Maximize;
 
             Click += MaximizeButton_Click;
             MouseEnter += MaximizeButton_MouseEnter;

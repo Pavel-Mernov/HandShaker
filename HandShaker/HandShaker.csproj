@@ -76,7 +76,9 @@
     <Compile Include="AdminProfileWindow.xaml.cs">
       <DependentUpon>AdminProfileWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Assets\IconResources\Icons.cs" />
     <Compile Include="Assets\ThemeResources\Templates.cs" />
+    <Compile Include="Assets\UniversalElements\ChatMenuItem.cs" />
     <Compile Include="Assets\UniversalElements\CloseWindowButton.cs" />
     <Compile Include="Assets\UniversalElements\SearchBox.cs" />
     <Compile Include="Assets\UniversalElements\UserMenuItem.cs" />
@@ -89,12 +91,15 @@
     <Compile Include="ProfileWindow.xaml.cs">
       <DependentUpon>ProfileWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserLib\Chat.cs" />
+    <Compile Include="UserLib\Chats\Chat.cs" />
+    <Compile Include="UserLib\Chats\ChatForTwo.cs" />
     <Compile Include="UserLib\Examples.cs" />
-    <Compile Include="UserLib\Message.cs" />
-    <Compile Include="UserLib\ReadStatus.cs" />
-    <Compile Include="UserLib\User.cs" />
-    <Compile Include="UserLib\UserType.cs" />
+    <Compile Include="UserLib\Messages\Message.Builder.cs" />
+    <Compile Include="UserLib\Messages\Message.cs" />
+    <Compile Include="UserLib\Messages\ReadStatus.cs" />
+    <Compile Include="UserLib\Users\User.Builder.cs" />
+    <Compile Include="UserLib\Users\User.cs" />
+    <Compile Include="UserLib\Users\UserType.cs" />
     <Compile Include="WebSocket\Client.cs" />
     <Page Include="AdminProfileWindow.xaml">
       <SubType>Designer</SubType>
@@ -201,17 +206,20 @@
     <Resource Include="favicon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="UserLib\PhotoMeCaucasus.jpg" />
+    <Resource Include="UserLib\Photos\PhotoMeCaucasus.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="UserLib\PhotoJulia.jpg" />
+    <Resource Include="UserLib\Photos\PhotoJulia.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="UserLib\photoArtyom.jpg" />
-    <Resource Include="UserLib\photoSergey.jpg" />
+    <Resource Include="UserLib\Photos\photoArtyom.jpg" />
+    <Resource Include="UserLib\Photos\photoSergey.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="UserLib\photoAlexander.jpg" />
+    <Resource Include="UserLib\Photos\photoAlexander.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="UserLib\Photos\PhotoDefaultChat.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
