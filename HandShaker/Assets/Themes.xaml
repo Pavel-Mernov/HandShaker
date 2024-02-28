@@ -220,6 +220,7 @@
             BorderBrush="{StaticResource BorderGray}"
             CornerRadius="40"
             Background="{StaticResource LightGrayFilling}"
+            HorizontalAlignment="Stretch"
             >
             <StackPanel
                 Orientation="Horizontal"

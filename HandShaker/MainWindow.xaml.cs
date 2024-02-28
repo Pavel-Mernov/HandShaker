@@ -2,6 +2,7 @@
 using HandShaker.UserLib;
 using HandShaker.UserLib.Users;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,11 +26,35 @@ namespace HandShaker
     {
         private User user_;
 
+
+
+        public IEnumerable UserChats
+        {
+            get { return (IEnumerable)GetValue(UserChatsProperty); }
+            private set { SetValue(UserChatsProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty UserChatsProperty =
+            DependencyProperty.Register("UserChats", typeof(IEnumerable), typeof(MainWindow), null);
+
+
+
         public MainWindow(User user)
         {
             InitializeComponent();
+
+            //ChatsPanelScrollViewer.Height = Height - 60;
+
             user_ = user;
-            user_.Chats.ForEach(chat => { ChatListPanel.Children.Add(new ChatMenuItem(user, chat)); });
+            
+
+            UserChats = user.Chats.Select(chat => new ChatMenuItem(user, chat));
+
+            foreach (var chat in UserChats)
+            {
+                ChatListMenu.Children.Add((MenuItem)chat);
+            }
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)

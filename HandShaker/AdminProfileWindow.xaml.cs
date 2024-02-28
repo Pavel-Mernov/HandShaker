@@ -98,7 +98,7 @@ namespace HandShaker
             var mainWindow = new MainWindow(Admin);
 
             mainWindow.Show();
-            this.Hide();
+            Hide();
             
         }
 

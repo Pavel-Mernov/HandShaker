@@ -38,6 +38,7 @@ namespace HandShaker.Assets.UniversalElements
             _user = user;
             _chat = chat;
             Template = (ControlTemplate)FindResource("ChatItemTemplate");
+            HorizontalAlignment = HorizontalAlignment.Stretch;
 
             MouseEnter += ChatMenuItem_MouseEnter;
             MouseLeave += ChatMenuItem_MouseLeave;
@@ -72,7 +73,7 @@ namespace HandShaker.Assets.UniversalElements
             var chatName = _chat.GetName(_user);
 
             var shortChatName = (chatName.Length <= 24) ? chatName : (chatName.Substring(0, 21) + "...");
-            
+
             TxtBoxChatName.Text = shortChatName;
 
             var lastMessage = _chat.LastOrDefault();
@@ -81,7 +82,7 @@ namespace HandShaker.Assets.UniversalElements
             {
                 var text = lastMessage.Text;
 
-                var shortText = (text.Length <= 33) ? text : (text.Substring(0,30) + "...");
+                var shortText = (text.Length <= 28) ? text : (text.Substring(0, 25) + "...");
 
                 TxtBlockLastMessage.Text = shortText;
             }
@@ -139,7 +140,7 @@ namespace HandShaker.Assets.UniversalElements
 
                 TxtBlockLastTime.Text = timeText;
             }
-            
+
         }
     }
 }
