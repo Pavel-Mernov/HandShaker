@@ -32,6 +32,7 @@ namespace HandShaker.Assets.UniversalElements
         private TextBlock TxtBlockLastTime => (TextBlock)Template.FindName("TxtBlockLastTime", this);
 
         private Border Border => (Border)Template.FindName("Border", this);
+        
 
         public ChatMenuItem(User user, Chat chat)
         {

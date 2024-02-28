@@ -166,7 +166,6 @@ namespace HandShaker.UserLib
 			}
 		}
 
-		public static IEnumerable<Chat> AdminChats { get; } = new Chat[] { AdminJuliaChat, AdminAlexanderChat, AdminArtyomChat, AdminAlexanderChat, AdminJuliaChat, AdminArtyomChat,
-			AdminJuliaChat, AdminArtyomChat, AdminAlexanderChat, AdminJuliaChat };
+		public static IEnumerable<Chat> AdminChats { get; } = new Chat[] { AdminJuliaChat, AdminAlexanderChat, AdminArtyomChat };
 	}
 }

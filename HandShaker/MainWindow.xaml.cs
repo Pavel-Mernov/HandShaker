@@ -1,6 +1,7 @@
 ﻿using HandShaker.Assets.UniversalElements;
 using HandShaker.UserLib;
 using HandShaker.UserLib.Users;
+// using HandShaker.UserLib.ViewModels;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -38,7 +39,7 @@ namespace HandShaker
         public static readonly DependencyProperty UserChatsProperty =
             DependencyProperty.Register("UserChats", typeof(IEnumerable), typeof(MainWindow), null);
 
-
+        // public IEnumerable UserChatItems { get; private set; }
 
         public MainWindow(User user)
         {
@@ -47,14 +48,20 @@ namespace HandShaker
             //ChatsPanelScrollViewer.Height = Height - 60;
 
             user_ = user;
-            
+
+            this.DataContext = user_;
 
             UserChats = user.Chats.Select(chat => new ChatMenuItem(user, chat));
 
+            // UserChatItems = user.Chats.Select(chat => new ChatItemViewModel(user, chat));
+
+            ChatItemsViewer.Height = SystemParameters.PrimaryScreenHeight - 220;
+            /*
             foreach (var chat in UserChats)
             {
                 ChatListMenu.Children.Add((MenuItem)chat);
             }
+            */
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)

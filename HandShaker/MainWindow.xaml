@@ -11,7 +11,8 @@
         mc:Ignorable="d"
         Title="HandShaker" 
         FontSize="15"
-        Height="800"
+        MinHeight="800"
+        Height="Auto"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
 
@@ -117,22 +118,26 @@
                             />
 
                         <ScrollViewer
+                            x:Name="ChatItemsViewer"
                             VerticalScrollBarVisibility="Visible"
                             HorizontalAlignment="Stretch"
                             HorizontalContentAlignment="Stretch"
-                            MaxHeight="860"
+                            
                             >
-                            <StackPanel
-                                x:Name="ChatListMenu"
+                            <ItemsControl
+                                x:Name="ChatListItemsControl"
                                 DataContext="{Binding ElementName=mainWindow}"
-                                HorizontalAlignment="Center"
+                                HorizontalAlignment="Stretch"
                                 Height="Auto"
                                 Background="Transparent"
+                                ItemsSource="{Binding UserChats}"
+                                
                                 >
                                 
-                            </StackPanel>
+                            </ItemsControl>
                         </ScrollViewer>
 
+                        
                         <universalelements:BlueButton
                             x:Name="BtnGoToProfile"
                             

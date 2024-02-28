@@ -221,5 +221,8 @@
   <ItemGroup>
     <Resource Include="UserLib\Photos\PhotoDefaultChat.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UserLib\ViewModels\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
