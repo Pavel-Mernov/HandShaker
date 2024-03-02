@@ -34,7 +34,7 @@ namespace HandShaker.Assets.UniversalElements
         private Border Border => (Border)Template.FindName("Border", this);
         
 
-        public ChatMenuItem(User user, Chat chat)
+        public ChatMenuItem(User user, Chat chat, Action<Chat> mouseDown)
         {
             _user = user;
             _chat = chat;
@@ -43,7 +43,9 @@ namespace HandShaker.Assets.UniversalElements
 
             MouseEnter += ChatMenuItem_MouseEnter;
             MouseLeave += ChatMenuItem_MouseLeave;
+            MouseDown += (s, e) => mouseDown(_chat);
         }
+
 
         private void ChatMenuItem_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {

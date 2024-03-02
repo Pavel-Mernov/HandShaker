@@ -1,4 +1,5 @@
-﻿using HandShaker.UserLib;
+﻿using HandShaker.Assets.Windows;
+using HandShaker.UserLib;
 using HandShaker.UserLib.Users;
 using System;
 using System.Collections.Generic;
@@ -14,15 +15,19 @@ namespace HandShaker.Assets.UniversalElements
 	{
 		public User User { get; private set; }
 
+		readonly Action<User> onClick_;
+
 		private Image AvatarImage => (Image)Template.FindName("AvatarImage", this);
 
 		private TextBlock TxtBlockName => (TextBlock)Template.FindName("TxtBlockName", this);
 
 		private Border UserItemBorder => (Border)Template.FindName("UserItemBorder", this);
 
-		public UserMenuItem(User user)
+		public UserMenuItem(User user, Action<User> onClick)
 		{
 			this.User = user;
+			onClick_ = onClick;
+
 			Template = (ControlTemplate)FindResource("UserMenuItemTemplate");
 
             MouseEnter += UserMenuItem_MouseEnter;
@@ -33,7 +38,7 @@ namespace HandShaker.Assets.UniversalElements
 
         private void UserMenuItem_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            
+			onClick_(User);
         }
 
         private void UserMenuItem_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)

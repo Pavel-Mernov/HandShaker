@@ -1,4 +1,5 @@
 ﻿using HandShaker.Assets.UniversalElements;
+using HandShaker.Assets.Windows;
 using HandShaker.UserLib;
 using HandShaker.UserLib.Users;
 using System;
@@ -38,9 +39,17 @@ namespace HandShaker
 
             var userList = Examples.Users.Where(user => user != admin);
 
+            Action<User> userAction = (user) =>
+            {
+                var newWindow = new OtherUserWindow(admin, user);
+
+                newWindow.Show();
+                Hide();
+            };
+
             foreach (var user in userList)
             {
-                UsersMenuPanel.Children.Add(new UserMenuItem(user));
+                UsersMenuPanel.Children.Add(new UserMenuItem(user, userAction));
             }
 
             // UserSearchBox.MouseDown += UserSearchBox_MouseDown;
@@ -74,7 +83,7 @@ namespace HandShaker
 
         private void btnChangePassword_Click(object sender, RoutedEventArgs e)
         {
-            var confirmationCodeWindow = new ConfirmationCodeWindow();
+            var confirmationCodeWindow = new ConfirmationCodeWindow(Admin);
             confirmationCodeWindow.Show();
         }
 

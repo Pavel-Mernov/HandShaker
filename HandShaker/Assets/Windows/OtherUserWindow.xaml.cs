@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HandShaker.UserLib.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,64 @@ namespace HandShaker.Assets.Windows
     /// </summary>
     public partial class OtherUserWindow : Window
     {
-        public OtherUserWindow()
+        readonly User _fromUser;
+        readonly User _viewedUser;
+        public OtherUserWindow(User fromUser, User viewedUser)
         {
             InitializeComponent();
+            _fromUser = fromUser;
+            _viewedUser = viewedUser;
+
+            tbName.Text = _viewedUser.UserName;
+            tbCompany.Text = _viewedUser.Company;
+            tbPosition.Text = _viewedUser.Position;
+            tbEmail.Text = _viewedUser.Email;
+            passwordBox.Password = new string(new char[_viewedUser.PasswordHash.Length]);
+            avatarImage.Source = _viewedUser.ImageSource;
+
+            if (_fromUser.UserType == UserType.Admin)
+            {
+                btnChangeCompany.Visibility = Visibility.Visible;
+                btnChangePosition.Visibility = Visibility.Visible;
+                btnChangeEmail.Visibility = Visibility.Visible;
+                btnChangeName.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void MainBorder_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                DragMove();
+            }
+            catch (Exception) { }
+        }
+
+        private void btnGoToMessages_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = new MainWindow(_fromUser);
+            mainWindow.Show();
+            Hide();
+        }
+
+        private void btnChangeCompany_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnChangePosition_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnChangeEmail_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnChangeName_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

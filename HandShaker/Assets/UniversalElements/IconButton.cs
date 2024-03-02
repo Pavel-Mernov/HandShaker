@@ -12,7 +12,7 @@ using System.Windows.Media;
 
 namespace HandShaker.Assets.UniversalElements
 {
-    internal class IconButton : Button
+    public class IconButton : Button
     {
         
 

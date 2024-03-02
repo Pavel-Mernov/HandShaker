@@ -1,6 +1,6 @@
 ﻿<Window
-    x:Name="confirmationCodeWindow"
-    x:Class="HandShaker.ConfirmationCodeWindow"
+    x:Name="enterEmailWindow"
+    x:Class="HandShaker.EnterEmail"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -9,11 +9,10 @@
     xmlns:local1="clr-namespace:HandShaker.Assets.UniversalElements"
     mc:Ignorable="d"
     Title="HandShaker" 
-    Height="324"
+    Height="378" 
     Width="432"
-    ResizeMode="NoResize"
-    AllowsTransparency="True"
     WindowStyle="None"
+    ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen">
     <Border 
         CornerRadius="0"
@@ -42,7 +41,7 @@
                     FontSize="24"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
-                    Text="Код подтверждения"
+                    Text="Адрес электронной почты"
                     Foreground="{StaticResource DarkGray}"/>
 
                 <!-- Text Pannel for login Inputs -->
@@ -60,13 +59,26 @@
                             FontSize="15"
                             HorizontalAlignment="Center"
                             FontWeight="SemiBold"
-                            Text="Вам на почту был отправлен код подтверждения."/>
+                            Text="Введите адрес электронной почты,"/>
 
                         <TextBlock
                             FontSize="15"
                             HorizontalAlignment="Center"
                             FontWeight="SemiBold"
-                            Text="Код актуален в течение: 10:00"/>
+                            Text="к которому привязана Ваша учётная запись."/>
+
+                        <TextBlock
+                            Margin="0,10,0,0"
+                            FontSize="15"
+                            HorizontalAlignment="Center"
+                            FontWeight="SemiBold"
+                            Text="На указанный адрес придёт письмо"/>
+
+                        <TextBlock
+                            FontSize="15"
+                            HorizontalAlignment="Center"
+                            FontWeight="SemiBold"
+                            Text="с кодом подтверждения"/>
 
                         <!-- Panel for login placeholder and password control -->
                         <StackPanel
@@ -74,9 +86,9 @@
                         Orientation="Vertical"
                         >
                             <Border
-                                x:Name="codeBorder"
+                                x:Name="emailBorder"
                                 BorderThickness="2"
-                                MouseDown="codeBorder_MouseDown"
+                                MouseDown="emailBorder_MouseDown"
                                 Margin="0, 15"
                                 BorderBrush="{StaticResource BorderGray}">
                                 <StackPanel
@@ -85,18 +97,18 @@
                                     
                                     Height="30">
                                     <TextBox
-                                        Name="txtConfirmationCode"
+                                        Name="txtEmail"
                                     
                                         Style="{StaticResource LoginPasswordControlStyle}" 
-                                        TextChanged="txtConfirmationCode_TextChanged"/>
+                                        TextChanged="txtEmail_TextChanged"/>
 
                                     <TextBlock
-                                        x:Name="loginPlaceholder"
+                                        x:Name="emailPlaceholder"
                                         Visibility="Visible"
                                         FontSize="16"
                                         Style="{StaticResource PlaceholderStyle}"
-                                        Text="Введите код подтверждения">
-                                        </TextBlock>
+                                        Text="Адрес электронной почты">
+                                    </TextBlock>
                                 </StackPanel>
                             </Border>
                         </StackPanel>
@@ -106,7 +118,7 @@
                     </StackPanel>
 
 
-                    
+
                     <!-- Button for entering the messenger app -->
                     <local1:BlueButton
                         x:Name="btnConfirm"
@@ -137,7 +149,7 @@
                         Source="/Assets/mainIcon.png"/>
 
                         <TextBlock
-                        Text="{Binding Title, ElementName=confirmationCodeWindow}"
+                        Text="{Binding Title, ElementName=enterEmailWindow}"
                         FontSize="30"
                         FontWeight="SemiBold"
                         Margin="10,0,0,0">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HandShaker.UserLib.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,13 @@ namespace HandShaker
     /// </summary>
     public partial class ConfirmationCodeWindow : Window
     {
-        public ConfirmationCodeWindow()
+        User _user;
+
+        public ConfirmationCodeWindow(User user)
         {
             InitializeComponent();
+
+            _user = user;
         }
 
         private void codeBorder_MouseDown(object sender, MouseButtonEventArgs e)
@@ -51,6 +56,9 @@ namespace HandShaker
 
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
+            var setPasswordWindow = new SetPasswordWindow(_user);
+
+            setPasswordWindow.Show();
             Hide();
         }
     }

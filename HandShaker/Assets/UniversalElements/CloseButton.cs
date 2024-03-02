@@ -11,7 +11,7 @@ using static HandShaker.Assets.IconResources.Icons;
 
 namespace HandShaker.Assets.UniversalElements
 {
-    internal class CloseButton : IconButton
+    public class CloseButton : IconButton
     {
         public CloseButton()
         {

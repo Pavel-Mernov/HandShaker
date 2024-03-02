@@ -1,5 +1,6 @@
 ﻿using HandShaker.Assets.UniversalElements;
 using HandShaker.UserLib;
+using HandShaker.UserLib.Chats;
 using HandShaker.UserLib.Users;
 // using HandShaker.UserLib.ViewModels;
 using System;
@@ -51,7 +52,9 @@ namespace HandShaker
 
             this.DataContext = user_;
 
-            UserChats = user.Chats.Select(chat => new ChatMenuItem(user, chat));
+            Action<Chat> mouseDown = chat => { ChatViewPanel = new ChatViewPanel(user, chat); };
+
+            UserChats = user.Chats.Select(chat => new ChatMenuItem(user, chat, mouseDown));
 
             // UserChatItems = user.Chats.Select(chat => new ChatItemViewModel(user, chat));
 

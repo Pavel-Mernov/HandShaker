@@ -63,7 +63,7 @@ namespace HandShaker
 
         private void btnChangePassword_Click(object sender, RoutedEventArgs e)
         {
-            var confirmationCodeWindow = new ConfirmationCodeWindow();
+            var confirmationCodeWindow = new ConfirmationCodeWindow(User);
             confirmationCodeWindow.Show();
         }
 

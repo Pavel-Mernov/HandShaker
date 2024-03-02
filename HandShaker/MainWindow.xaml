@@ -161,12 +161,17 @@
                     HorizontalAlignment="Stretch"
                     BorderBrush="{StaticResource BorderGray}"
                     BorderThickness="3">
-                    <Image
+                    <StackPanel
+                        Orientation="Vertical"
                         VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Source="/Assets/mainIcon.png"
-                        Width="200"
-                        Height="200"/>
+                        x:Name="ChatViewPanel">
+                        <Image
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Source="/Assets/mainIcon.png"
+                            Width="200"
+                            Height="200"/>
+                    </StackPanel>
 
                 </Border>
             </Grid>
