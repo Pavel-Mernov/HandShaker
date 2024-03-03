@@ -1,17 +1,17 @@
 ﻿<Window
-    x:Name="setUserNameWindow"
-    x:Class="HandShaker.Assets.Windows.SetUserNameWindow"
+    x:Name="window"
+    x:Class="HandShaker.Assets.Windows.SetCompanyWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:HandShaker.Assets.Windows" 
-    xmlns:local1="clr-namespace:HandShaker.Assets.UniversalElements"
+    xmlns:local="clr-namespace:HandShaker.Assets.Windows" xmlns:local1="clr-namespace:HandShaker.Assets.UniversalElements"
     mc:Ignorable="d"
     Title="HandShaker" 
-    Height="432" 
+    Height="324" 
     Width="432"
-    WindowStyle="None">
+    WindowStyle="None"
+    ResizeMode="NoResize">
     <Border 
         CornerRadius="0"
         Background="{StaticResource BlankFilling}"
@@ -39,7 +39,7 @@
                     FontSize="24"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
-                    Text="Новое имя пользователя"
+                    Text="Новое название компании"
                     Foreground="{StaticResource DarkGray}"/>
 
                 <!-- Text Pannel for login Inputs -->
@@ -59,46 +59,25 @@
                             HorizontalAlignment="Left"
                             FontWeight="SemiBold"
                             Foreground="Black"
-                            Text="Новое имя пользователя:"/>
+                            Text="Новое название компании:"/>
 
                         <TextBox
                             Margin="0,5,0,0"
-                            x:Name="NameTextBox"
+                            x:Name="TxtCompany"
                             BorderBrush="{StaticResource BorderGray}"
                             Foreground="Black"
-                            BorderThickness="2"
-                            FontSize="20"
-                            MouseEnter="NameTextBox_MouseEnter"
-                            MouseLeave="NameTextBox_MouseLeave"/>
-                    </StackPanel>
-
-                    <!-- Layout for new user surname -->
-                    <StackPanel
-                        Orientation="Vertical"
-                        Margin="0,15"
-                        >
-
-                        <TextBlock
-                            FontSize="15"
-                            HorizontalAlignment="Left"
-                            FontWeight="SemiBold"
-                            Foreground="Black"
-                            Text="Новая фамилия:"/>
-
-                        <TextBox
-                            Margin="0,5,0,0"
-                            x:Name="SurnameTextBox"
-                            BorderBrush="{StaticResource BorderGray}"
                             BorderThickness="2"
                             FontSize="20"/>
                     </StackPanel>
 
+                    
+
                     <!-- Button for entering the messenger app -->
                     <local1:BlueButton
-                        x:Name="btnSave"
+                        x:Name="BtnSave"
                         Margin="0, 20, 0, 0"
                         Tag="Сохранить"
-                        Click="btnSave_Click"/>
+                        Click="BtnSave_Click"/>
                 </StackPanel>
             </StackPanel>
 
@@ -123,7 +102,7 @@
                         Source="/Assets/mainIcon.png"/>
 
                         <TextBlock
-                        Text="{Binding Title, ElementName=setUserNameWindow}"
+                        Text="{Binding Title, ElementName=window}"
                         FontSize="30"
                         FontWeight="SemiBold"
                         Margin="10,0,0,0">
@@ -138,7 +117,7 @@
 
                         <local1:CloseWindowButton
                             x:Name="closeButton"
-                            Window="{Binding ElementName=setUserNameWindow}"/>
+                            Window="{Binding ElementName=window}"/>
                     </StackPanel>
                 </Grid>
             </Border>

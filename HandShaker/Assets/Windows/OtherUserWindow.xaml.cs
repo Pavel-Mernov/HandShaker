@@ -78,7 +78,10 @@ namespace HandShaker.Assets.Windows
 
         private void btnChangeCompany_Click(object sender, RoutedEventArgs e)
         {
+            DisableAllChangeButtons();
 
+            var setCompanyWindow = new SetCompanyWindow(_viewedUser, EnableAllChangeButtons);
+            setCompanyWindow.Show();
         }
 
         private void btnChangePosition_Click(object sender, RoutedEventArgs e)
@@ -94,8 +97,8 @@ namespace HandShaker.Assets.Windows
         private void btnChangeName_Click(object sender, RoutedEventArgs e)
         {
             DisableAllChangeButtons();
-            var SetUserNameWindow = new SetUserNameWindow(_viewedUser, EnableAllChangeButtons);
-            SetUserNameWindow.Show();
+            var setUserNameWindow = new SetUserNameWindow(_viewedUser, EnableAllChangeButtons);
+            setUserNameWindow.Show();
         }
     }
 }
