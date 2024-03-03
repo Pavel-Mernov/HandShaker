@@ -44,6 +44,22 @@ namespace HandShaker.Assets.Windows
             }
         }
 
+        private void DisableAllChangeButtons()
+        {
+            btnChangeCompany.IsEnabled = false;
+            btnChangePosition.IsEnabled = false;
+            btnChangeEmail.IsEnabled = false;
+            btnChangeName.IsEnabled = false;
+        }
+
+        private void EnableAllChangeButtons()
+        {
+            btnChangeCompany.IsEnabled = true;
+            btnChangePosition.IsEnabled = true;
+            btnChangeEmail.IsEnabled = true;
+            btnChangeName.IsEnabled = true;
+        }
+
         private void MainBorder_MouseDown(object sender, MouseButtonEventArgs e)
         {
             try
@@ -77,7 +93,9 @@ namespace HandShaker.Assets.Windows
 
         private void btnChangeName_Click(object sender, RoutedEventArgs e)
         {
-
+            DisableAllChangeButtons();
+            var SetUserNameWindow = new SetUserNameWindow(_viewedUser, EnableAllChangeButtons);
+            SetUserNameWindow.Show();
         }
     }
 }

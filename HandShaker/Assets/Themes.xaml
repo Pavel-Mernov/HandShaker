@@ -204,7 +204,7 @@
                     VerticalAlignment="Center"
                     FontSize="30"
                     FontWeight="SemiBold"
-                    Foreground="Black"/>
+                    Foreground="{StaticResource DarkGray}"/>
             </StackPanel>
         </Border>
     </ControlTemplate>

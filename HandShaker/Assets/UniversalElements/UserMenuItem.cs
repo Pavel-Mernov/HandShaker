@@ -51,7 +51,7 @@ namespace HandShaker.Assets.UniversalElements
 
             if (TxtBlockName != null)
             {
-                TxtBlockName.Foreground = BorderGray;
+                TxtBlockName.Foreground = DarkGray;
             }
         }
 

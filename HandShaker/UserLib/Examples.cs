@@ -78,7 +78,7 @@ namespace HandShaker.UserLib
 			.SetUserName("Александр Гуреев")
 			.SetCompany("HandShaker Inc.")
 			.SetPosition("Middle Kotlin-разработчик")
-			.SetEmail("alexgureev@hanshaker.org")
+			.SetEmail("alexgureev@handshaker.org")
 			.SetPassword("11111111")
 			.SetImage("/UserLib/Photos/photoAlexander.jpg")
 			.SetLastTime(DateTime.Now - TimeSpan.FromHours(2.1))
