@@ -89,6 +89,9 @@
     <Compile Include="Assets\Windows\SetCompanyWindow.xaml.cs">
       <DependentUpon>SetCompanyWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Assets\Windows\SetPositionWindow.xaml.cs">
+      <DependentUpon>SetPositionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Assets\Windows\SetUserNameWindow.xaml.cs">
       <DependentUpon>SetUserNameWindow.xaml</DependentUpon>
     </Compile>
@@ -135,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Assets\Windows\SetCompanyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Windows\SetPositionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

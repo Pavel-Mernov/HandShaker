@@ -86,7 +86,10 @@ namespace HandShaker.Assets.Windows
 
         private void btnChangePosition_Click(object sender, RoutedEventArgs e)
         {
+            DisableAllChangeButtons();
 
+            var setPositionWindow = new SetPositionWindow(_viewedUser, EnableAllChangeButtons);
+            setPositionWindow.Show();
         }
 
         private void btnChangeEmail_Click(object sender, RoutedEventArgs e)
