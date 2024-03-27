@@ -55,6 +55,72 @@
             </StackPanel>
 
             <StackPanel
+                Grid.Row="2"
+                Grid.Column="0"
+                Orientation="Vertical"
+                Width="440"
+                >
+                <Border
+                    x:Name="ChatSearchBorder"
+                    MouseDown="ChatSearchBorder_MouseDown"
+                    Height="80"
+                    BorderThickness="3"
+                    BorderBrush="{StaticResource BorderGray}"
+                    Margin="5,15,5,5"
+                    CornerRadius="30">
+                    <StackPanel
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        Margin="10"
+                        >
+                        <universalelements:IconButton
+                            MouseDown="IconButton_MouseDown"
+                            Foreground="{StaticResource DarkGray}"
+                            VerticalAlignment="Bottom"
+                            
+                            Height="50"
+                            Width="50"
+                            Content="{StaticResource search}"/>
+                        <TextBox
+                            VerticalAlignment="Bottom"
+                            x:Name="ChatTextBox"
+                            Margin="10,0,0,0"
+                            BorderThickness="0"
+                            FontSize="35"
+                            Background="Transparent"
+                            TextChanged="ChatTextBox_TextChanged"
+                            MaxWidth="300"/>
+
+                        <Label
+                            x:Name="LbChatPlaceHolder"
+                            MouseDown="LbChatPlaceHolder_MouseDown"
+                            VerticalAlignment="Bottom"
+                            Content="Поиск"
+                            Foreground="{StaticResource DarkGray}"
+                            FontSize="35"
+                            FontWeight="SemiBold"/>
+                    </StackPanel>
+                </Border>
+
+                <ScrollViewer
+                    x:Name="ChatListViewer"
+                    VerticalScrollBarVisibility="Auto"
+                    Margin="10, 0"
+                    >
+                    <StackPanel
+                        x:Name="ChatsListPanel"
+                        Orientation="Vertical">
+                        
+                    </StackPanel>
+                </ScrollViewer>
+
+                <universalelements:BlueButton
+                    Margin="10, 20"
+                    Tag="Перейти в профиль"
+                    Click="btnGoToProfile_Click"/>
+            </StackPanel>
+            
+            <StackPanel
                 x:Name="ChatPanel"
                 Grid.Row="2"
                 Grid.Column="1"
@@ -106,6 +172,8 @@
 
                         <universalelements:CloseButton/>
                     </StackPanel>
+                    
+                    
                 </Grid>
             </Border>
             

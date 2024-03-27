@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 namespace HandShaker.WebSocket
 {
     // Class for websocket client
-    public class Client
+    public class Client : IClient
     {
-        ClientWebSocket _client;
+        readonly ClientWebSocket _client;
         Uri _serverUri;
         private readonly CancellationTokenSource _cTS = new CancellationTokenSource();
 
         private bool _isConnected = false;
 
-        public Client(string uriString)
+        public Client()
         {
             _client = new ClientWebSocket();
         }
@@ -35,6 +35,7 @@ namespace HandShaker.WebSocket
             catch (WebSocketException)
             {
                 _isConnected = false;
+                throw new WebSocketException($"Failed to connect to server {serverUriString}");
             }
         }
 
@@ -52,5 +53,7 @@ namespace HandShaker.WebSocket
                 await _client.SendAsync(messageBytesSegment, WebSocketMessageType.Text, true, _cTS.Token);
             }
         }
+
+
     }
 }

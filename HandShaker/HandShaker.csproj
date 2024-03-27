@@ -73,16 +73,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AdminProfileWindow.xaml.cs">
-      <DependentUpon>AdminProfileWindow.xaml</DependentUpon>
+    <Compile Include="AddUserWindow.xaml.cs">
+      <DependentUpon>AddUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Assets\UniversalElements\ChatView.cs" />
+    <Compile Include="Assets\UniversalElements\UserItemView.cs" />
+    <Compile Include="OtherUserWindow.xaml.cs">
+      <DependentUpon>OtherUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileWindow.xaml.cs">
+      <DependentUpon>ProfileWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Assets\UniversalElements\CloseWindowButton.cs" />
     <Compile Include="Assets\UniversalElements\SearchBox.cs" />
     <Compile Include="ConfirmationCodeWindow.xaml.cs">
       <DependentUpon>ConfirmationCodeWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ProfileWindow.xaml.cs">
-      <DependentUpon>ProfileWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserLib\Chat.cs" />
     <Compile Include="UserLib\Message.cs" />
@@ -90,7 +95,16 @@
     <Compile Include="UserLib\User.cs" />
     <Compile Include="UserLib\UserType.cs" />
     <Compile Include="WebSocket\Client.cs" />
-    <Page Include="AdminProfileWindow.xaml">
+    <Compile Include="WebSocket\IClient.cs" />
+    <Page Include="AddUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OtherUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProfileWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -129,10 +143,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="EnterWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ProfileWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

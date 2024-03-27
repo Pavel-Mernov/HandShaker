@@ -1,0 +1,160 @@
+﻿<Window
+    x:Name="window"
+    x:Class="HandShaker.AddUserWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local1="clr-namespace:HandShaker.Assets.UniversalElements"
+    Title="HandShaker"
+    Height="480"
+    Width="432"
+    ResizeMode="NoResize"
+    AllowsTransparency="True"
+    WindowStyle="None"
+    WindowStartupLocation="CenterScreen">
+    
+    <Border CornerRadius="0"
+            Background="{StaticResource BlankFilling}"
+            BorderThickness="3"
+            BorderBrush="{StaticResource BorderGray}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <!-- Title Bar -->
+            <Border Background="{StaticResource BorderGray}"
+                    Height="50"
+                    MouseDown="mainBorder_MouseDown">
+                <Grid>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="10,0,0,0">
+                        <Image Height="45" Source="/Assets/mainIcon.png"/>
+                        <TextBlock Text="{Binding Title, ElementName=addUserWindow}"
+                                   FontSize="30"
+                                   FontWeight="SemiBold"
+                                   Margin="10,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right"
+                                Margin="10,0"
+                                Orientation="Horizontal">
+                        <local1:CloseWindowButton Window="{Binding ElementName=window}"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- User Attribute Setters -->
+            <StackPanel Grid.Row="1" Margin="10">
+                <Border BorderThickness="3" BorderBrush="{StaticResource BorderGray}" CornerRadius="15">
+                    <StackPanel Margin="15,0,0,0"
+                                Orientation="Horizontal" 
+                                Height="30" 
+                                VerticalAlignment="Stretch">
+                        <TextBox Name="txtUsername"
+                                 MaxWidth="370"
+                                 Style="{StaticResource LoginPasswordControlStyle}" 
+                                 TextChanged="txtUsername_TextChanged"/>
+                        <TextBlock x:Name="loginPlaceholder" 
+                                   Style="{StaticResource PlaceholderStyle}" 
+                                   Text="Enter username" 
+                                   FontSize="16"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Repeat for each attribute -->
+                <Border BorderThickness="3" BorderBrush="{StaticResource BorderGray}" CornerRadius="15" Margin="0,10">
+                    <StackPanel Margin="15,0,0,0"
+                                Orientation="Horizontal" 
+                                Height="30" 
+                                VerticalAlignment="Stretch">
+                        <TextBox 
+                            Name="txtCompany" 
+                            MaxWidth="370"
+                            Style="{StaticResource LoginPasswordControlStyle}" 
+                            TextChanged="txtCompany_TextChanged"/>
+                        <TextBlock 
+                            x:Name="companyPlaceholder" 
+                            Style="{StaticResource PlaceholderStyle}" 
+                            Text="Enter company" 
+                            FontSize="16"/>
+                    </StackPanel>
+                </Border>
+
+                <Border BorderThickness="3" BorderBrush="{StaticResource BorderGray}" CornerRadius="15" Margin="0,10">
+                    <StackPanel 
+                        Margin="15,0,0,0"
+                        Orientation="Horizontal" 
+                        Height="30" 
+                        VerticalAlignment="Stretch">
+                        <TextBox 
+                            Name="txtPosition" 
+                            MaxWidth="370"
+                            Style="{StaticResource LoginPasswordControlStyle}" 
+                            TextChanged="txtPosition_TextChanged"/>
+                        <TextBlock x:Name="positionPlaceholder" 
+                                   Style="{StaticResource PlaceholderStyle}" 
+                                   Text="Enter position" 
+                                   FontSize="16"/>
+                    </StackPanel>
+                </Border>
+
+                <Border BorderThickness="3" BorderBrush="{StaticResource BorderGray}" CornerRadius="15" Margin="0,10">
+                    <StackPanel Margin="15,0,0,0"
+                                Orientation="Horizontal" 
+                                Height="30" 
+                                VerticalAlignment="Stretch">
+                        <TextBox Name="txtEmail" 
+                                 MaxWidth="370"
+                                 Style="{StaticResource LoginPasswordControlStyle}" 
+                                 TextChanged="txtEmail_TextChanged"/>
+                        <TextBlock x:Name="emailPlaceholder" 
+                                   Style="{StaticResource PlaceholderStyle}" 
+                                   Text="Enter email" 
+                                   FontSize="16"/>
+                    </StackPanel>
+                </Border>
+
+                <Border BorderThickness="3" BorderBrush="{StaticResource BorderGray}" CornerRadius="15" Margin="0,10">
+                    <StackPanel Margin="15,0,0,0"
+                                Orientation="Horizontal" 
+                                Height="30" 
+                                VerticalAlignment="Stretch">
+                        <PasswordBox 
+                            Name="txtPassword" 
+                            MaxWidth="370"
+                            Style="{StaticResource LoginPasswordControlStyle}" 
+                            PasswordChanged="txtPassword_PasswordChanged"/>
+                        <TextBlock 
+                            x:Name="passwordPlaceholder" 
+                            Style="{StaticResource PlaceholderStyle}" 
+                            Text="Enter password" 
+                            FontSize="16"/>
+                    </StackPanel>
+                </Border>
+
+                <Border BorderThickness="3" BorderBrush="{StaticResource BorderGray}" CornerRadius="15" Margin="0,10">
+                    <StackPanel Margin="15,0,0,0"
+                                Orientation="Horizontal" 
+                                Height="30" 
+                                VerticalAlignment="Stretch">
+                        <PasswordBox 
+                            Name="txtRepeatPassword" 
+                            MaxWidth="370"
+                            Style="{StaticResource LoginPasswordControlStyle}" 
+                            PasswordChanged="txtRepeatPassword_PasswordChanged"/>
+                        <TextBlock 
+                            x:Name="repeatPasswordPlaceholder" 
+                            Style="{StaticResource PlaceholderStyle}" 
+                            Text="Repeat password" 
+                            FontSize="16"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Button to add user -->
+                <local1:BlueButton Tag="Add User" Click="btnAddUser_Click"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

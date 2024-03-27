@@ -1,5 +1,5 @@
 ﻿<Window x:Class="HandShaker.ProfileWindow"
-        x:Name="profileWindow"
+        x:Name="window"
         AllowsTransparency="True"
         WindowStyle="None"
         WindowState="Maximized"
@@ -32,7 +32,7 @@
                 <!-- The whole one column -->
 
             </Grid.ColumnDefinitions>
-            
+
             <!-- Profile information Area -->
             <Grid
                 
@@ -74,20 +74,20 @@
                             </Image>
 
                             <Button
-                            x:Name="btnChangePhoto"
-                            Background="Transparent"
-                            BorderThickness="0"
-                            Foreground="{StaticResource ButtonBlue}"
-                            Margin="0, 10"
-                            FontSize="25"
-                            Content="Изменить"
-                            Click="btnChangePhoto_Click"/>
+                                x:Name="btnChangePhoto"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Foreground="{StaticResource ButtonBlue}"
+                                Margin="0, 10"
+                                FontSize="25"
+                                Content="Изменить"
+                                Click="btnChangePhoto_Click"/>
 
                             <StackPanel
-                            Orientation="Horizontal"
-                            Margin="0, 15"
-                            VerticalAlignment="Bottom"
-                            HorizontalAlignment="Center">
+                                Orientation="Horizontal"
+                                Margin="0, 15"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Center">
                                 <TextBlock
                                     FontSize="18"
                                     VerticalAlignment="Bottom"
@@ -112,12 +112,12 @@
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Bottom">
                                 <TextBlock
-                                FontSize="20"
-                                VerticalAlignment="Bottom"
-                                HorizontalAlignment="Center"
-                                FontWeight="SemiBold"
-                                Foreground="{StaticResource DarkGray}"
-                                Text="Компания:"/>
+                                    FontSize="20"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Center"
+                                    FontWeight="SemiBold"
+                                    Foreground="{StaticResource DarkGray}"
+                                    Text="Компания:"/>
 
                                 <TextBlock
                                     x:Name="tbCompany"
@@ -127,6 +127,7 @@
                                     Margin="10, 0"/>
                             </StackPanel>
 
+                            <!-- Stack panel for position -->
                             <StackPanel
                                 Orientation="Vertical"
                                 Margin="0, 10"
@@ -146,6 +147,99 @@
                                     HorizontalAlignment="Center"
                                     FontWeight="SemiBold"
                                     Margin="10, 0"/>
+                            </StackPanel>
+                            
+                            <!-- Stack pannel for adding new user -->
+                            <StackPanel
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                x:Name="userAddPanel"
+                                MouseEnter="userAddPanel_MouseEnter"
+                                MouseLeave="userAddPanel_MouseLeave"
+                                MouseDown="userAddPanel_MouseDown">
+
+                                <Button 
+                                    x:Name="ImgAddUser"
+                                    Style="{StaticResource IconButtonStyle}"
+                                    Foreground="{StaticResource DarkGreen}"
+                                    Content="{StaticResource addSign}"/>
+
+                                <TextBlock
+                                    x:Name="TbAddUser"
+                                    Margin="20"
+                                    FontWeight="SemiBold"
+                                    FontSize="20"
+                                    Foreground="Black"
+                                    Text="Добавить пользователя"/>
+                            </StackPanel>
+
+                            <!-- User Search Field -->
+                            <StackPanel
+                                Orientation="Vertical"
+                                >
+                                <Border
+                                    x:Name="UserSearchBorder"
+                                    MouseDown="UserSearchBorder_MouseDown"
+                                    Height="80"
+                                    Width="450"
+                                    BorderThickness="3"
+                                    BorderBrush="{StaticResource BorderGray}"
+                                    Margin="5,15,5,5"
+                                    CornerRadius="30"
+                                    Background="{StaticResource LightGrayFilling}">
+                                    <StackPanel
+                                        Orientation="Horizontal"
+                                        VerticalAlignment="Center"
+                                        Margin="10"
+                                        >
+                                        <universalelements:IconButton
+                                            x:Name="BtnImgSearch"
+                                            MouseDown="BtnImgSearch_MouseDown"
+                                            Foreground="{StaticResource DarkGray}"
+                                            VerticalAlignment="Bottom"
+            
+                                            Height="50"
+                                            Width="50"
+                                            Content="{StaticResource search}"/>
+                                        <TextBox
+                                            VerticalAlignment="Bottom"
+                                            x:Name="UserSearchTextBox"
+                                            Margin="10,0,0,0"
+                                            BorderThickness="0"
+                                            FontSize="35"
+                                            Background="Transparent"
+                                            TextChanged="UserSearchTextBox_TextChanged"
+                                            MaxWidth="300"/>
+
+                                        <Label
+                                            x:Name="LbUserSearchPlaceHolder"
+                                            MouseDown="LbUserSearchPlaceHolder_MouseDown"
+                                            VerticalAlignment="Bottom"
+                                            Content="Найти"
+                                            Foreground="{StaticResource DarkGray}"
+                                            FontSize="35"
+                                            FontWeight="SemiBold"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <Border
+                                    x:Name="UserListBorder"
+                                    BorderThickness="3"
+                                    BorderBrush="{StaticResource BorderGray}"
+                                    CornerRadius="10"
+                                    Background="{StaticResource LightGrayFilling}">
+                                    <ScrollViewer
+                                        VerticalScrollBarVisibility="Auto"
+                                        MaxHeight="250"
+                                        >
+                                        <StackPanel
+                                            x:Name="UserListPanel"
+                                            Orientation="Vertical">
+
+                                        </StackPanel>
+
+                                    </ScrollViewer>
+                                </Border>
                             </StackPanel>
 
                             <StackPanel
@@ -202,16 +296,16 @@
                             </StackPanel>
 
                             <universalelements:BlueButton
-                            x:Name="btnGoToMessages"
-                            Margin="0, 20"
-                            Tag="Перейти к сообщениям"
-                            Click="btnGoToMessages_Click"/>
+                                x:Name="btnGoToMessages"
+                                Margin="0, 20"
+                                Tag="Перейти к сообщениям"
+                                Click="btnGoToMessages_Click"/>
                         </StackPanel>
                     </ScrollViewer>
                     <!-- Stack panel for user attributes -->
 
-                    
-                    
+
+
                 </Border>
             </Grid>
 
@@ -234,7 +328,7 @@
                             Source="/Assets/mainIcon.png"/>
 
                         <TextBlock
-                            Text="{Binding Title, ElementName=profileWindow}"
+                            Text="{Binding Title, ElementName=window}"
                             FontSize="30"
                             FontWeight="Bold"
                             Margin="10,0,0,0">
@@ -246,9 +340,9 @@
                         HorizontalAlignment="Right"
                         Margin="10, 0"
                         Orientation="Horizontal">
-                        <universalelements:MinimizeButton Window="{Binding ElementName=profileWindow}"/>
+                        <universalelements:MinimizeButton Window="{Binding ElementName=window}"/>
 
-                        <universalelements:MaximizeButton Window="{Binding ElementName=profileWindow}"/>
+                        <universalelements:MaximizeButton Window="{Binding ElementName=window}"/>
 
                         <universalelements:CloseButton/>
                     </StackPanel>

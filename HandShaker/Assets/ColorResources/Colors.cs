@@ -27,6 +27,10 @@ namespace HandShaker.Assets.ColorResources
 
         public static readonly Brush ClosingButtonRed = (Brush)_instance.FindResource("ClosingButtonRed");
 
+        public static readonly Brush DarkGreen = (Brush)_instance.FindResource("DarkGreen");
+
+        public static readonly Brush LightGreen = (Brush)_instance.FindResource("LightGreen");
+
         public static readonly Brush Black = new SolidColorBrush(Color.FromRgb(0, 0, 0));
     }
 }

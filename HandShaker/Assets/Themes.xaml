@@ -19,7 +19,7 @@
 
                 <ControlTemplate TargetType="Button">
                     <Border 
-                    Background="{TemplateBinding Background}">
+                        Background="{TemplateBinding Background}">
                         <Path
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
@@ -220,5 +220,48 @@
 
         
     </Style>
+
+    <Style x:Key="UserItemViewStyle" TargetType="ContentControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Border Background="Transparent" Margin="5" Padding="5" CornerRadius="5" Cursor="Hand">
+                        <Grid>
+                            <Image Name="UserImage" Width="50" Height="50" Margin="5" Stretch="UniformToFill" />
+                            <TextBlock Name="UserNameText" Margin="60,5,5,5" VerticalAlignment="Center" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="UserImage" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" BlurRadius="10" Color="#FF0080FF" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="ChatViewTemplate" TargetType="ContentControl">
+        <Border Background="White" BorderThickness="1" BorderBrush="Gray" CornerRadius="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Name="imgUser" Width="50" Height="50" Stretch="UniformToFill"/>
+                <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,10,0">
+                    <TextBlock Text="{Binding User.UserName}" FontWeight="Bold"/>
+                    <TextBlock Name="lblLastMessage" Text="{Binding LastMessage}" TextWrapping="Wrap"/>
+                </StackPanel>
+                <Ellipse Name="elOnlineIndicator" Grid.Column="2" Width="10" Height="10" Fill="LightGreen"
+                     HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,5,5"
+                     Visibility="Collapsed"/>
+            </Grid>
+        </Border>
+    </ControlTemplate>
 
 </ResourceDictionary>

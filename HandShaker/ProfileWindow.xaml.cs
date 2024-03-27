@@ -12,11 +12,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static HandShaker.Assets.ColorResources.Colors;
 
 namespace HandShaker
 {
     /// <summary>
-    /// Логика взаимодействия для ProfileWindow.xaml
+    /// Логика взаимодействия для AdminProfileWindow.xaml
     /// </summary>
     public partial class ProfileWindow : Window
     {
@@ -25,7 +26,7 @@ namespace HandShaker
         public ProfileWindow(User user)
         {
             InitializeComponent();
-            this.User = user;
+            User = user;
 
             tbName.Text = User.UserName;
             tbCompany.Text = User.Company;
@@ -34,23 +35,18 @@ namespace HandShaker
             passwordBox.Password = User.PasswordHash;
             avatarImage.Source = User.ImageSource;
 
-            /*
-            var binding = new Binding()
+            if (user.UserType != UserType.Admin)
             {
-                ElementName = "user",
-                Path = new PropertyPath("ImageSource")
-            };
-
-            avatarImage.SetBinding(Image.SourceProperty, binding);
-            */
-        }
-
-        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                DragMove();
+                userAddPanel.Visibility = Visibility.Hidden;
+                UserSearchBorder.Visibility = Visibility.Hidden;
+                UserListBorder.Visibility = Visibility.Hidden;
             }
+            else
+            {
+                // Get All Users from DB and make view for all of them
+            }
+
+            // TODO : Add all users from dataBase
         }
 
         private void btnChangePhoto_Click(object sender, RoutedEventArgs e)
@@ -58,20 +54,78 @@ namespace HandShaker
 
         }
 
-
-
         private void btnChangePassword_Click(object sender, RoutedEventArgs e)
         {
             var confirmationCodeWindow = new ConfirmationCodeWindow();
             confirmationCodeWindow.Show();
         }
 
-        // Close this window and go back to messenger window
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                try
+                {
+                    DragMove();
+                }
+                catch (InvalidOperationException)
+                {
+
+                }
+            }
+        }
+
         private void btnGoToMessages_Click(object sender, RoutedEventArgs e)
         {
             var mainWindow = new MainWindow(User);
             this.Hide();
             mainWindow.Show();
+        }
+
+        private void userAddPanel_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ImgAddUser.Foreground = LightGreen;
+            TbAddUser.Foreground = DarkGray;
+        }
+
+        private void userAddPanel_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ImgAddUser.Foreground = DarkGreen;
+            TbAddUser.Foreground = Black;
+        }
+
+        private void userAddPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var userAddWindow = new AddUserWindow();
+            userAddWindow.Show();
+            
+        }
+
+        private void UserSearchBorder_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            UserSearchTextBox.Focus();
+        }
+
+        private void BtnImgSearch_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            UserSearchTextBox.Focus();
+        }
+
+        private void UserSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(UserSearchTextBox.Text))
+            {
+                LbUserSearchPlaceHolder.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                LbUserSearchPlaceHolder.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void LbUserSearchPlaceHolder_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            UserSearchTextBox.Focus();
         }
     }
 }

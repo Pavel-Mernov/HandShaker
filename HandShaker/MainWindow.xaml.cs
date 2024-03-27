@@ -1,4 +1,5 @@
-﻿using HandShaker.UserLib;
+﻿using HandShaker.Assets.UniversalElements;
+using HandShaker.UserLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,12 +22,17 @@ namespace HandShaker
     /// </summary>
     public partial class MainWindow : Window
     {
-        private User user_;
+        private readonly User user_;
 
         public MainWindow(User user)
         {
             InitializeComponent();
             user_ = user;
+
+            foreach (var chat in user.Chats)
+            {
+                ChatsListPanel.Children.Add(new ChatView(user, chat));
+            }
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -41,19 +47,37 @@ namespace HandShaker
         {
             Window profileWindow;
 
-            if (user_.UserType == UserType.User)
+            profileWindow = new ProfileWindow(user_);
+
+            profileWindow.Show();
+            this.Close();
+        }
+
+        private void IconButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ChatTextBox.Focus();
+        }
+
+        private void ChatSearchBorder_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ChatTextBox.Focus();
+        }
+
+        private void ChatTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(ChatTextBox.Text))
             {
-                profileWindow = new ProfileWindow(user_);
+                LbChatPlaceHolder.Visibility = Visibility.Visible;
             }
             else
             {
-                profileWindow = new AdminProfileWindow(user_);
+                LbChatPlaceHolder.Visibility = Visibility.Hidden;
             }
-
-            this.Hide();
-            profileWindow.Show();
         }
 
-
+        private void LbChatPlaceHolder_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ChatTextBox.Focus();
+        }
     }
 }

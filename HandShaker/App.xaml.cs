@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HandShaker.WebSocket;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -14,9 +15,10 @@ namespace HandShaker
     /// </summary>
     public partial class App : Application
     {
+        public static IClient Client;
         public App()
         {
-
+            Client = new Client();
         }
     }
 }

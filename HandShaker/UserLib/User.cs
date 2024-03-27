@@ -23,6 +23,8 @@ namespace HandShaker.UserLib
 
         public string PasswordHash { get; protected set; } = string.Empty;
 
+        public bool IsOnline { get; set; } = false;
+
         public ImageSource ImageSource { get; set; }
 
         public List<Chat> Chats { get; protected set; }
