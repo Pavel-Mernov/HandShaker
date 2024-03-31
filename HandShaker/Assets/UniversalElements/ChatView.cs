@@ -15,14 +15,16 @@ namespace HandShaker.Assets.UniversalElements
         public User User { get; }
         public Chat Chat { get; }
 
+        private Action _onClick;
+
         private Image imgUser => Template.FindName("imgUser", this) as Image;
         private TextBlock lblLastMessage => Template.FindName("lblLastMessage", this) as TextBlock;
 
         private Ellipse elOnlineIndicator => Template.FindName("elOnlineIndicator", this) as Ellipse;
 
-        public ChatView(User user, Chat chat)
+        public ChatView(User user, Chat chat, Action onClick)
         {
-            
+            _onClick = onClick;
             User = user;
             Chat = chat;
             MouseDown += ChatView_MouseDown;
@@ -31,9 +33,7 @@ namespace HandShaker.Assets.UniversalElements
 
         private void ChatView_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            // Add your logic to handle the click event
-            // For demonstration, let's just display a message
-            MessageBox.Show($"Clicked chat with user: {User.UserName}");
+            _onClick();
         }
 
         public override void OnApplyTemplate()
@@ -51,6 +51,7 @@ namespace HandShaker.Assets.UniversalElements
             {
                 // Handle chat with multiple users (e.g., group chat)
                 // You can implement this as per your requirements
+                elOnlineIndicator.Visibility = Visibility.Hidden;
             }
         }
 

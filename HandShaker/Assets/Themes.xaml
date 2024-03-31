@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     xmlns:handshaker="clr-namespace:HandShaker" 
-    xmlns:assets="clr-namespace:HandShaker.Assets"
+    
     >
 
     <!-- Style for Icon Buttons -->
@@ -263,5 +263,32 @@
             </Grid>
         </Border>
     </ControlTemplate>
+
+    <Style x:Key="ChatPanelStyle" TargetType="ContentControl">
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="UserControl">
+                    <StackPanel>
+                        <Border Background="White" BorderThickness="1" BorderBrush="Gray" CornerRadius="10">
+                            <StackPanel 
+                                Name="itemsPanel"
+                                Orientation="Horizontal">
+                                <Image Name="imgChat" Width="50" Height="50" Stretch="UniformToFill"/>
+                                <StackPanel VerticalAlignment="Center" Margin="10,0,10,0">
+                                    <TextBlock Name="txtChatName" FontWeight="Bold"/>
+                                </StackPanel>
+                                <Ellipse Name="elOnlineIndicator" Width="10" Height="10" Fill="LightGreen"
+                                     HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"
+                                     Visibility="Collapsed"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 
 </ResourceDictionary>

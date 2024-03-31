@@ -31,7 +31,7 @@ namespace HandShaker
 
             foreach (var chat in user.Chats)
             {
-                ChatsListPanel.Children.Add(new ChatView(user, chat));
+                ChatsListPanel.Children.Add(new ChatView(user, chat, () => MakeUserChat(chat)));
             }
         }
 
@@ -78,6 +78,13 @@ namespace HandShaker
         private void LbChatPlaceHolder_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ChatTextBox.Focus();
+        }
+
+        private void MakeUserChat(Chat chat)
+        {
+            ChatPanel.Children.Clear();
+
+
         }
     }
 }

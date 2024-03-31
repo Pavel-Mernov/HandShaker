@@ -13,9 +13,16 @@ namespace HandShaker.UserLib
         public ImageSource Image { get; set; }
         public List<User> Members { get; private set; } = new List<User>();
 
-        private readonly List<Message> messages_ = new List<Message>();
-        public Chat(params User[] members)
+        public string Name { get; private set; } = string.Empty;
+        public Chat(string name)
         {
+            Name = name;
+        }
+
+        private readonly List<Message> messages_ = new List<Message>();
+        public Chat(string name, params User[] members)
+        {
+            Name = name;
             Members = members.ToList();
         }
 
@@ -29,6 +36,19 @@ namespace HandShaker.UserLib
             else
             {
                 return Image;
+            }
+        }
+
+        public string GetName(User user)
+        {
+            if (Members.Count == 2)
+            {
+                var otherUser = Members.Find(curUser => curUser != user);
+                return otherUser.UserName;
+            }
+            else
+            {
+                return Name;
             }
         }
 

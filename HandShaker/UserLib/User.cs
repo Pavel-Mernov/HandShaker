@@ -27,7 +27,7 @@ namespace HandShaker.UserLib
 
         public ImageSource ImageSource { get; set; }
 
-        public List<Chat> Chats { get; protected set; }
+        public List<Chat> Chats { get; } = new List<Chat>();
 
         public User() { }
 

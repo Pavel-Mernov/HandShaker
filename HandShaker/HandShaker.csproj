@@ -76,6 +76,7 @@
     <Compile Include="AddUserWindow.xaml.cs">
       <DependentUpon>AddUserWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Assets\UniversalElements\ChatPanel.cs" />
     <Compile Include="Assets\UniversalElements\ChatView.cs" />
     <Compile Include="Assets\UniversalElements\UserItemView.cs" />
     <Compile Include="OtherUserWindow.xaml.cs">
