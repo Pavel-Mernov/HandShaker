@@ -12,8 +12,6 @@ namespace HandShaker.WebSocket
     public class Client : IClient
     {
         readonly ClientWebSocket _client;
-        Uri _serverUri;
-        private readonly CancellationTokenSource _cTS = new CancellationTokenSource();
 
         private bool _isConnected = false;
 
@@ -22,38 +20,49 @@ namespace HandShaker.WebSocket
             _client = new ClientWebSocket();
         }
 
-        public async void Connect(string serverUriString)
+        public async Task ConnectAsync(string serverUri)
         {
-            _serverUri = new Uri(serverUriString);
+            var cts = new CancellationTokenSource();
+            cts.CancelAfter(TimeSpan.FromSeconds(60));
 
             try
             {
-                await _client.ConnectAsync(_serverUri, _cTS.Token);
+                await _client.ConnectAsync(new Uri(serverUri), cts.Token);
                 _isConnected = true;
-
             }
             catch (WebSocketException)
             {
                 _isConnected = false;
-                throw new WebSocketException($"Failed to connect to server {serverUriString}");
             }
         }
 
         // method that sends message to the server
-        public async void SendMessage(string message)
+        public async Task SendMessageAsync(string message)
         {
-            if (string.IsNullOrEmpty(message))
-            {
-                return;
-            }
+            var messageBytes = Encoding.UTF8.GetBytes(message);
+            var buffer = new ArraySegment<byte>(messageBytes);
 
-            if (_isConnected && _client.State == WebSocketState.Open)
+            var cts = new CancellationTokenSource();
+            cts.CancelAfter(TimeSpan.FromSeconds(60));
+
+            if (_isConnected)
             {
-                var messageBytesSegment = new ArraySegment<byte>(Encoding.UTF8.GetBytes(message));
-                await _client.SendAsync(messageBytesSegment, WebSocketMessageType.Text, true, _cTS.Token);
+                await _client.SendAsync(buffer, WebSocketMessageType.Text, endOfMessage: true, cts.Token);
             }
+            // Console.WriteLine($"Sent message: {message}");
+
+            //await ReceiveMessageAsync();
         }
 
+        public async Task ReceiveMessageAsync()
+        {
+            var buffer = new ArraySegment<byte>(new byte[1024]);
+
+            var result = await _client.ReceiveAsync(buffer, CancellationToken.None);
+            var receivedMessage = Encoding.UTF8.GetString(buffer.Array, 0, result.Count);
+
+            
+        }
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using HandShaker.Assets.UniversalElements;
 using HandShaker.UserLib;
+using HandShaker.WebSocket;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +49,8 @@ namespace HandShaker
             Window profileWindow;
 
             profileWindow = new ProfileWindow(user_);
+
+            App.CurrentApp.Client.SendMessageAsync("Client goes to profile.");
 
             profileWindow.Show();
             this.Close();

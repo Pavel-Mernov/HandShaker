@@ -14,6 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
+using System.Runtime.Remoting.Channels;
+
 namespace HandShaker
 {
     /// <summary>
@@ -77,6 +80,12 @@ namespace HandShaker
         private void btnEnter_Click(object sender, RoutedEventArgs e)
         {
             var user = User.ExampleAdmin;
+            user.IsOnline = true;
+
+            App.CurrentApp.User = user;
+
+            
+            App.CurrentApp.Client.SendMessageAsync("Client connected!");
 
             var mainWindow = new MainWindow(user);
             this.Hide();

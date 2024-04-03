@@ -9,9 +9,12 @@ namespace HandShaker.WebSocket
 {
     public interface IClient
     {
-        void Connect(string serverUriString);
+        Task ConnectAsync(string serverUriString);
 
         // method that sends message to the server
-        void SendMessage(string message);
+        Task SendMessageAsync(string message);
+
+        // method that receives message from the server
+        Task ReceiveMessageAsync();
     }
 }
