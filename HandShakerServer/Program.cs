@@ -1,3 +1,4 @@
+using HandShakerServer.Requests;
 using System.Net;
 using System.Net.WebSockets;
 using System.Text;
@@ -62,7 +63,7 @@ namespace HandShakerServer
 
                 if (!string.IsNullOrEmpty(message))
                 {
-                    Console.WriteLine($"Client: {message}");
+                    var request = message.ParseRequest(); 
                 }
 
                 var response = "Server: OK";

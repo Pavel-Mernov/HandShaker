@@ -51,12 +51,12 @@ namespace HandShaker.WebSocket
             }
             // Console.WriteLine($"Sent message: {message}");
 
-            //await ReceiveMessageAsync();
+            await ReceiveMessageAsync();
         }
 
         public async Task ReceiveMessageAsync()
         {
-            var buffer = new ArraySegment<byte>(new byte[1024]);
+            var buffer = new ArraySegment<byte>(new byte[App.CurrentApp.BuffSize]);
 
             var result = await _client.ReceiveAsync(buffer, CancellationToken.None);
             var receivedMessage = Encoding.UTF8.GetString(buffer.Array, 0, result.Count);

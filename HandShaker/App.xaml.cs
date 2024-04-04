@@ -20,6 +20,8 @@ namespace HandShaker
         public IClient Client { get; private set; }
         public User User {  get; set; }
 
+        public int BuffSize => 1 << 16;
+
         public static int ConnectionId => 5243;
         public static string ConnectionString => $"ws://localhost:{ConnectionId}/send";
 

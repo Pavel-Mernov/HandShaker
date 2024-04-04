@@ -50,7 +50,7 @@ namespace HandShaker
 
             profileWindow = new ProfileWindow(user_);
 
-            App.CurrentApp.Client.SendMessageAsync("Client goes to profile.");
+            
 
             profileWindow.Show();
             this.Close();

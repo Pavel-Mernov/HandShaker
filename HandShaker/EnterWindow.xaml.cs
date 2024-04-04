@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 
 
 using System.Runtime.Remoting.Channels;
+using HandShaker.Requests;
 
 namespace HandShaker
 {
@@ -84,8 +85,9 @@ namespace HandShaker
 
             App.CurrentApp.User = user;
 
-            
-            App.CurrentApp.Client.SendMessageAsync("Client connected!");
+            var authRequest = new AuthRequest(txtLogin.Text, passwordBox.Password); 
+
+            App.CurrentApp.Client.SendMessageAsync(authRequest.Serialize());
 
             var mainWindow = new MainWindow(user);
             this.Hide();
