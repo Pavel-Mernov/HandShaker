@@ -23,26 +23,16 @@ namespace HandShaker.Requests
             Password = password;
         }
 
-        public IDictionary<string, object> Attributes
-        {
-            get
-            {
-                var result = new Dictionary<string, object>();
-
-                var requestType = RequestType.Auth.ToString().GetSHA256();
-
-                result["RequestType".GetSHA256()] = requestType.GetSHA256();
-                result["Login".GetSHA256()] = Login.GetSHA256();
-                result["Password".GetSHA256()] = Password.GetSHA256();
-
-                return result;
-            }
-        }
-
         public string Serialize()
         {
-            var attrs = Attributes;
-            
+            var attrs = new Dictionary<string, object>();
+
+            var requestType = RequestType.Auth.ToString().GetSHA256();
+
+            attrs["RequestType".GetSHA256()] = requestType.GetSHA256();
+            attrs["Login".GetSHA256()] = Login.GetSHA256();
+            attrs["Password".GetSHA256()] = Password.GetSHA256();
+
             var jsonString = JsonSerializer.Serialize(attrs);
 
             return jsonString;

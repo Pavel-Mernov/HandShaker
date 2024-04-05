@@ -11,7 +11,5 @@ namespace HandShaker.Requests
     public interface IRequest : IJsonSerializable
     {
         RequestType RequestType { get; }
-
-        IDictionary<string, object> Attributes { get; }
     }
 }

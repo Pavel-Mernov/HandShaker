@@ -24,8 +24,8 @@ namespace HandShakerServer.Hash
 
         public static string GetSHA256(this string data) => GetSHA256(data, Encoding.UTF8);
 
-        // public static string GetSHA256(this object obj, Encoding encoding) => GetSHA256(obj.ToString(), encoding);
+        public static string GetSHA256(this object obj, Encoding encoding) => GetSHA256(obj.ToString(), encoding);
 
-        // public static string GetSHA256(this object obj) => GetSHA256(obj.ToString());
+        public static string GetSHA256(this object obj) => GetSHA256(obj.ToString());
     }
 }

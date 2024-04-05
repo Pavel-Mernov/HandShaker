@@ -10,18 +10,22 @@ namespace HandShaker.UserLib
 {
     public class Chat : IEnumerable<Message>
     {
+        private static int _totalCount = 0;
+        public int Id { get; private set; }
         public ImageSource Image { get; set; }
         public List<User> Members { get; private set; } = new List<User>();
 
         public string Name { get; private set; } = string.Empty;
         public Chat(string name)
         {
+            Id = _totalCount++;
             Name = name;
         }
 
         private readonly List<Message> messages_ = new List<Message>();
         public Chat(string name, params User[] members)
         {
+            Id = _totalCount++;
             Name = name;
             Members = members.ToList();
         }
