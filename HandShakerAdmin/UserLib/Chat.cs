@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HandShaker.Requests
+namespace HandShakerAdmin.UserLib
 {
-    public enum RequestType
+    public class Chat
     {
-        Unknown = 0,
-        Auth,
-        UpdateState,
-        AddUser,
     }
 }

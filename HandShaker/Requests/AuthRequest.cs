@@ -25,9 +25,9 @@ namespace HandShaker.Requests
 
         public string Serialize()
         {
-            var attrs = new Dictionary<string, object>();
+            var attrs = new Dictionary<string, string>();
 
-            var requestType = RequestType.Auth.ToString().GetSHA256();
+            var requestType = RequestType.Auth.ToString();
 
             attrs["RequestType".GetSHA256()] = requestType.GetSHA256();
             attrs["Login".GetSHA256()] = Login.GetSHA256();

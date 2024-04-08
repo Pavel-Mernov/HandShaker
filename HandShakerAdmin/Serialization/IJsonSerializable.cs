@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HandShaker.Requests
+namespace HandShakerAdmin.Serialization
 {
-    public enum RequestType
+    public interface IJsonSerializable
     {
-        Unknown = 0,
-        Auth,
-        UpdateState,
-        AddUser,
+        string Serialize();
     }
 }

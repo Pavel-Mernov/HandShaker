@@ -126,6 +126,7 @@
     <Compile Include="ConfirmationCodeWindow.xaml.cs">
       <DependentUpon>ConfirmationCodeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Requests\AddUserRequest.cs" />
     <Compile Include="Requests\AuthRequest.cs" />
     <Compile Include="Requests\Request.cs" />
     <Compile Include="Requests\RequestType.cs" />

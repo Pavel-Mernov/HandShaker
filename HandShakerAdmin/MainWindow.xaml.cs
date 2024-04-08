@@ -1,34 +1,39 @@
-﻿using HandShaker.Hash;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using HandShakerAdmin.Hash;
+using HandShakerAdmin.UserLib;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace HandShaker
+namespace HandShakerAdmin
 {
-    public partial class AddUserWindow : Window
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
     {
-        public AddUserWindow()
+        public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void mainBorder_MouseDown(object sender, MouseButtonEventArgs e)
+        private void MainBorder_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
 
-        private void btnAddUser_Click(object sender, RoutedEventArgs e)
+        private void BtnAddAdmin_Click(object sender, RoutedEventArgs e)
         {
             string username = txtUsername.Text;
             string company = txtCompany.Text;
-            string position = txtPosition.Text;
+            string position = "Администратор";
             string email = txtEmail.Text;
             string password = txtPassword.Password;
             string repeatPassword = txtRepeatPassword.Password;
@@ -39,40 +44,37 @@ namespace HandShaker
                 return;
             }
 
-            string passwordHash = password.GetSHA256();
-
             string userDetails = $"Username: {username}\nCompany: {company}\nPosition: {position}\nEmail: {email}\nPassword: {password}";
-            MessageBox.Show(userDetails, "New User Details");
+            MessageBox.Show(userDetails, "New Admin Details");
+
+            var admin = new User(UserType.Admin, username, company, position, email, password.GetSHA256());
+
 
             Close();
         }
 
-        private void txtUsername_TextChanged(object sender, TextChangedEventArgs e)
+        private void TxtUsername_TextChanged(object sender, TextChangedEventArgs e)
         {
             loginPlaceholder.Visibility = string.IsNullOrEmpty(txtUsername.Text) ? Visibility.Visible : Visibility.Collapsed;
         }
 
-        private void txtCompany_TextChanged(object sender, TextChangedEventArgs e)
+        private void TxtCompany_TextChanged(object sender, TextChangedEventArgs e)
         {
             companyPlaceholder.Visibility = string.IsNullOrEmpty(txtCompany.Text) ? Visibility.Visible : Visibility.Collapsed;
         }
 
-        private void txtPosition_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            positionPlaceholder.Visibility = string.IsNullOrEmpty(txtPosition.Text) ? Visibility.Visible : Visibility.Collapsed;
-        }
 
-        private void txtEmail_TextChanged(object sender, TextChangedEventArgs e)
+        private void TxtEmail_TextChanged(object sender, TextChangedEventArgs e)
         {
             emailPlaceholder.Visibility = string.IsNullOrEmpty(txtEmail.Text) ? Visibility.Visible : Visibility.Collapsed;
         }
 
-        private void txtPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        private void TxtPassword_PasswordChanged(object sender, RoutedEventArgs e)
         {
             passwordPlaceholder.Visibility = string.IsNullOrEmpty(txtPassword.Password) ? Visibility.Visible : Visibility.Collapsed;
         }
 
-        private void txtRepeatPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        private void TxtRepeatPassword_PasswordChanged(object sender, RoutedEventArgs e)
         {
             repeatPasswordPlaceholder.Visibility = string.IsNullOrEmpty(txtRepeatPassword.Password) ? Visibility.Visible : Visibility.Collapsed;
         }

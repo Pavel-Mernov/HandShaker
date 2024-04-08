@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HandShaker.Requests
+namespace HandShakerAdmin.Request
 {
     public enum RequestType
     {
-        Unknown = 0,
-        Auth,
-        UpdateState,
         AddUser,
     }
 }
