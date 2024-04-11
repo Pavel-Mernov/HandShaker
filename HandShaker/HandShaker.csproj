@@ -113,8 +113,10 @@
     </Compile>
     <Compile Include="Assets\UniversalElements\ChatPanel.cs" />
     <Compile Include="Assets\UniversalElements\ChatView.cs" />
+    <Compile Include="Assets\UniversalElements\MessageInputBox.cs" />
     <Compile Include="Assets\UniversalElements\UserItemView.cs" />
     <Compile Include="Hash\AESAdapter.cs" />
+    <Compile Include="Keys\KeyGenerator.cs" />
     <Compile Include="OtherUserWindow.xaml.cs">
       <DependentUpon>OtherUserWindow.xaml</DependentUpon>
     </Compile>
@@ -133,6 +135,7 @@
     <Compile Include="Hash\SHA256Adapter.cs" />
     <Compile Include="Serialization\IJsonSerializable.cs" />
     <Compile Include="UserLib\Chat.cs" />
+    <Compile Include="UserLib\Examples.cs" />
     <Compile Include="UserLib\Message.cs" />
     <Compile Include="UserLib\ReadStatus.cs" />
     <Compile Include="UserLib\User.cs" />
@@ -246,6 +249,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="UserLib\PhotoMeCaucasus.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="UserLib\photoOtherUser.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

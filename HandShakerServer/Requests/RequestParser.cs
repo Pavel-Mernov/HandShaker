@@ -19,7 +19,7 @@ namespace HandShakerServer.Requests
             
             var requestKey = "RequestType".GetSHA256();
 
-            if (!requestDictionary.ContainsKey(requestKey))
+            if (!requestDictionary.TryGetValue(requestKey, out object? value))
             {
                 return new Dictionary<RequestAttributes, object>
                 {
@@ -28,7 +28,7 @@ namespace HandShakerServer.Requests
             }
 
             var result = new Dictionary<RequestAttributes, object>();
-            var requestType = requestDictionary[requestKey].ToString();
+            var requestType = value.ToString();
 
             if (requestType == RequestType.Auth.GetSHA256())
             {

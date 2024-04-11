@@ -1,4 +1,5 @@
 ﻿using HandShakerAdmin.Hash;
+using HandShakerAdmin.Request;
 using HandShakerAdmin.UserLib;
 using System.Text;
 using System.Windows;
@@ -38,19 +39,35 @@ namespace HandShakerAdmin
             string password = txtPassword.Password;
             string repeatPassword = txtRepeatPassword.Password;
 
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(company) || string.IsNullOrEmpty (position) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) ||
+                string.IsNullOrEmpty(repeatPassword))
+            {
+                MessageBox.Show("All fields must me filled!");
+                return;
+            }
             if (password != repeatPassword)
             {
                 MessageBox.Show("Passwords do not match!");
                 return;
             }
 
-            string userDetails = $"Username: {username}\nCompany: {company}\nPosition: {position}\nEmail: {email}\nPassword: {password}";
+            string userDetails = $"Username: {username}\nCompany: {company}\nPosition: {position}\nEmail: {email}\n";
             MessageBox.Show(userDetails, "New Admin Details");
 
+
+
             var admin = new User(UserType.Admin, username, company, position, email, password.GetSHA256());
+            var addUserRequest = new AddUserRequest(admin);
 
+            App.CurrentApp.Client.SendMessageAsync(addUserRequest.Serialize());
 
-            Close();
+            txtUsername.Text = string.Empty; 
+            txtCompany.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtPassword.Password = string.Empty;
+            txtRepeatPassword.Password = string.Empty;
+
+            App.CurrentApp.Shutdown();
         }
 
         private void TxtUsername_TextChanged(object sender, TextChangedEventArgs e)

@@ -1,5 +1,5 @@
-﻿using HandShaker.Hash;
-using HandShaker.UserLib;
+﻿using HandShakerAdmin.Hash;
+using HandShakerAdmin.UserLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,16 +7,11 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace HandShaker.Requests
+namespace HandShakerAdmin.Request
 {
-    public class AddUserRequest : IRequest
+    public class AddUserRequest(User user) : IRequest
     {
-        private User _user;
-
-        public AddUserRequest(User user)
-        {
-            _user = user;
-        }
+        private readonly User _user = user;
 
         public RequestType RequestType => RequestType.AddUser;
 

@@ -1,4 +1,5 @@
-﻿using HandShaker.UserLib;
+﻿using HandShaker.Assets.UniversalElements;
+using HandShaker.UserLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,9 @@ namespace HandShaker
             else
             {
                 // Get All Users from DB and make view for all of them
+                UserListBorder.Visibility = Visibility.Visible;
+                UserListPanel.Children.Add(new UserItemView(Examples.OtherUser));
+                
             }
 
             // TODO : Add all users from dataBase

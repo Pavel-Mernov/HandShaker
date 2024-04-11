@@ -8,9 +8,12 @@ using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Shapes;
 
+using static HandShaker.Assets.ColorResources.Colors;
+using System.Xml;
+
 namespace HandShaker.Assets.UniversalElements
 {
-    public partial class ChatView : ContentControl
+    public partial class ChatView : Control
     {
         public User User { get; }
         public Chat Chat { get; }
@@ -22,6 +25,10 @@ namespace HandShaker.Assets.UniversalElements
 
         private Ellipse elOnlineIndicator => Template.FindName("elOnlineIndicator", this) as Ellipse;
 
+        private TextBlock txtChatName => Template.FindName("txtChatName", this) as TextBlock;
+
+        private Border mainBorder => Template.FindName("mainBorder", this) as Border;
+
         public ChatView(User user, Chat chat, Action onClick)
         {
             _onClick = onClick;
@@ -29,6 +36,20 @@ namespace HandShaker.Assets.UniversalElements
             Chat = chat;
             MouseDown += ChatView_MouseDown;
             Template = (ControlTemplate)FindResource("ChatViewTemplate");
+            MouseEnter += ChatView_MouseEnter;
+            MouseLeave += ChatView_MouseLeave;
+        }
+
+        private void ChatView_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            mainBorder.Background = Transparent;
+            lblLastMessage.Foreground = DarkGray;
+        }
+
+        private void ChatView_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            mainBorder.Background = LightGrayFilling;
+            lblLastMessage.Foreground = Black;
         }
 
         private void ChatView_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -39,8 +60,10 @@ namespace HandShaker.Assets.UniversalElements
         public override void OnApplyTemplate()
         {
             var otherUser = Chat.Members.Find(curUser => curUser != User);
-            imgUser.Source = Chat.GetImage(otherUser);
+            imgUser.Source = Chat.GetImage(User);
             lblLastMessage.Text = TrimLastMessage(Chat);
+            txtChatName.Text = Chat.GetName(User);
+
             if (Chat.Members.Count == 2)
             {
                 // Show online indicator if there's only one other user in the chat
@@ -58,9 +81,9 @@ namespace HandShaker.Assets.UniversalElements
         private string TrimLastMessage(Chat chat)
         {
             string lastMessage = chat.Count() > 0 ? chat.Last().Text : string.Empty;
-            if (lastMessage.Length > 25)
+            if (lastMessage.Length > 35)
             {
-                return lastMessage.Substring(0, 22) + "...";
+                return lastMessage.Substring(0, 32) + "...";
             }
             return lastMessage;
         }

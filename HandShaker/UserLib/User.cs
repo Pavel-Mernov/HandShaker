@@ -1,4 +1,5 @@
 ﻿using HandShaker.Hash;
+using HandShaker.Keys;
 using HandShaker.Serialization;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace HandShaker.UserLib
 {
     public class User : IJsonSerializable
     {
+        private readonly string _key;
         public int Id { get; private set; }
         public UserType UserType { get; private set; }
         public string UserName { get; protected set; } = string.Empty;
@@ -37,6 +39,8 @@ namespace HandShaker.UserLib
 
         public User(int id, UserType userType, string userName, string company, string position, string email, string passwordHash)
         {
+            _key = KeyGenerator.GenerateKey(16);
+
             Id = id;
             UserType = userType;
             UserName = userName;
@@ -59,13 +63,6 @@ namespace HandShaker.UserLib
             ImageSource = new BitmapImage(uri);
         }
 
-        public static User ExampleUser { get; } 
-            = new User(1, UserType.User, "Павел Мернов", "HandShaker Inc.", "Junior .NET-разработчик", "paulmernov@gmail.com", "11111111", "/UserLib/PhotoMeCaucasus.jpg");
-
-        public static User ExampleAdmin { get; }
-            = new User(0, UserType.Admin, "Павел Мернов", "HandShaker Inc.", "Администратор", "paulmernov@gmail.com", "11111111", "/UserLib/PhotoMeCaucasus.jpg");
-
-
         public override string ToString()
         {
             return string.Join(".", UserType, UserName, Company, Position);
@@ -83,17 +80,20 @@ namespace HandShaker.UserLib
             var attrIsOnline = "IsOnline".GetSHA256();
             var attrChats = "Chats".GetSHA256();
             var attrImageSource = "ImageSource".GetSHA256();
+            var attrKey = "Key".GetSHA256();
 
-            var passwordHash = PasswordHash;
+            var key = _key;
 
-            var valueId = Id.ToString().EncodeAES(passwordHash);
-            var valueUserType = UserType.ToString().EncodeAES(passwordHash);
-            var valueUserName = UserName.EncodeAES(passwordHash);
-            var valueCompany = Company.EncodeAES(passwordHash);
-            var valuePosition = Position.EncodeAES(passwordHash);
-            var valueEmail = Email.EncodeAES(passwordHash);
-            var valueIsOnline = IsOnline.ToString().EncodeAES(passwordHash);
-            
+            var valueId = Id.ToString().EncodeAES(key);
+            var valueUserType = UserType.ToString().EncodeAES(key);
+            var valueUserName = UserName.EncodeAES(key);
+            var valueCompany = Company.EncodeAES(key);
+            var valuePosition = Position.EncodeAES(key);
+            var valueEmail = Email.EncodeAES(key);
+            var valueIsOnline = IsOnline.ToString().EncodeAES(key);
+            var valueChats = Chats.Select(chat => chat.Id.ToString().EncodeAES(key)).ToList();
+            var valueImageSource = JsonSerializer.Serialize(ImageSource).EncodeAES(key);
+            var valueKey = key.EncodeAES(KeyGenerator.GetUniversalKey());
 
             var dictAttrs = new Dictionary<string, string>
             {
@@ -103,8 +103,11 @@ namespace HandShaker.UserLib
                 [attrCompany] = valueCompany,
                 [attrPosition] = valuePosition,
                 [attrEmail] = valueEmail,
-                [attrPasswordHash] = passwordHash,
+                [attrPasswordHash] = PasswordHash.EncodeAES(key),
                 [attrIsOnline] = valueIsOnline,
+                [attrChats] = JsonSerializer.Serialize(valueChats),
+                [attrImageSource] = valueImageSource,
+                [attrKey] = valueKey,
             };
 
             var jsonString = JsonSerializer.Serialize(dictAttrs);

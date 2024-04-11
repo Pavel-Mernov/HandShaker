@@ -1,4 +1,5 @@
 ﻿using HandShaker.Hash;
+using HandShaker.Keys;
 using HandShaker.Serialization;
 using System;
 using System.Collections;
@@ -16,6 +17,17 @@ namespace HandShaker.UserLib
         private string _keyHint;
 
         private string _key;
+
+        private void InitializeKeys()
+        {
+            var universalKey = KeyGenerator.GetUniversalKey();
+            var keyHint = KeyGenerator.GenerateKey(12, 16);
+            var key = KeyGenerator.GenerateKey(16, 32);
+
+            _keyHint = keyHint.EncodeAES(universalKey);
+            _key = key.EncodeAES(keyHint);
+        }
+
         public int Id { get; private set; }
         public ImageSource Image { get; set; }
         public List<User> Members { get; private set; } = new List<User>();
@@ -23,13 +35,17 @@ namespace HandShaker.UserLib
         public string Name { get; private set; } = string.Empty;
         public Chat(string name, int id)
         {
-            Id = id;
+            InitializeKeys();
+
+            this.Id = id;
             Name = name;
         }
 
         private readonly List<Message> messages_ = new List<Message>();
         public Chat(string name, int id, params User[] members)
         {
+            InitializeKeys();
+
             Id = id;
             Name = name;
             Members = members.ToList();
@@ -88,14 +104,51 @@ namespace HandShaker.UserLib
 
         public string Serialize()
         {
+            var attrKeyHint = "KeyHint".GetSHA256();
+            var attrKey = "Key".GetSHA256();
             var attrId = "Id".GetSHA256();
             var attrImage = "Image".GetSHA256();
             var attrMembers = "Members".GetSHA256();
             var attrName = "Name".GetSHA256();
             var attrMessages = "Messages".GetSHA256();
 
-            var dictAttrs = new Dictionary<string, string>();
+            var valueKeyHint = _keyHint;
+            var valueKey = _key;
 
+            var keyHint = _keyHint.DecodeAES(KeyGenerator.GetUniversalKey());
+            var key = _key.DecodeAES(KeyGenerator.GetUniversalKey());
+
+            var valueId = Id.ToString().EncodeAES(key);
+            var valueImage = JsonSerializer.Serialize(Image).EncodeAES(key);
+            var membersList = Members.Select(member => member.Id.ToString().EncodeAES(key));
+            var valueName = Name.EncodeAES(key);
+
+            var messageList = new List<string>();
+
+            foreach (var message in this)
+            {
+                var messageAttrs = new Dictionary<string, string>
+                {
+                    ["Text".GetSHA256()] = message.Text.EncodeAES(key),
+                    ["From".GetSHA256()] = message.From.Id.ToString().EncodeAES(key),
+                    ["Stattus".GetSHA256()] = message.Status.ToString().EncodeAES(key),
+                    ["DateTime".GetSHA256()] = JsonSerializer.Serialize(message.DateTime).EncodeAES(key)
+                };
+
+                messageList.Add(JsonSerializer.Serialize(messageAttrs));
+            }
+
+            var dictAttrs = new Dictionary<string, string>
+            {
+                [attrKeyHint] = valueKeyHint,
+                [attrKey] = valueKey,
+                [attrId] = valueId,
+                [attrImage] = valueImage,
+                [attrMembers] = JsonSerializer.Serialize(membersList),
+                [attrName] = valueName,
+                [attrMessages] = JsonSerializer.Serialize(messageList),
+            };
+            
             var jsonString = JsonSerializer.Serialize(dictAttrs);
 
             return jsonString;

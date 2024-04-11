@@ -87,7 +87,12 @@ namespace HandShaker
         {
             ChatPanel.Children.Clear();
 
+            ChatPanel.HorizontalAlignment = HorizontalAlignment.Stretch;
+            ChatPanel.VerticalAlignment = VerticalAlignment.Top;
+            ChatPanel.Margin = new Thickness(10);
 
+            ChatPanel.Children.Add(new ChatPanel(user_, chat));
+            ChatPanel.Children.Add(new MessageInputBox(user_, chat));
         }
     }
 }

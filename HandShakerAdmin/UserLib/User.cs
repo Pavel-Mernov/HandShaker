@@ -5,11 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
+using HandShakerAdmin.Hash;
+using HandShakerAdmin.Serialization;
+using System.Text.Json;
+using HandShakerAdmin.Keys;
 
 namespace HandShakerAdmin.UserLib
 {
-    public class User
+    public class User : IJsonSerializable
     {
+        private readonly string _key;
+
+        public int Id { get; private set; }
         public UserType UserType { get; private set; }
         public string UserName { get; protected set; } = string.Empty;
 
@@ -29,8 +36,11 @@ namespace HandShakerAdmin.UserLib
 
         public User() { }
 
-        public User(UserType userType, string userName, string company, string position, string email, string passwordHash)
+        public User(int id, UserType userType, string userName, string company, string position, string email, string passwordHash)
         {
+            _key = KeyGenerator.GenerateKey(16);
+
+            Id = id;
             UserType = userType;
             UserName = userName;
             Company = company;
@@ -39,30 +49,72 @@ namespace HandShakerAdmin.UserLib
             PasswordHash = passwordHash;
         }
 
-        public User(UserType userType, string userName, string company, string position, string email, string passwordHash, ImageSource imageSource)
-            : this(userType, userName, company, position, email, passwordHash)
+        public User(UserType userType, string userName, string company, string position, string email, string passwordHash)
+            : this(0, userType, userName, company, position, email, passwordHash) { }
+
+        public User(int id, UserType userType, string userName, string company, string position, string email, string passwordHash, ImageSource imageSource)
+            : this(id, userType, userName, company, position, email, passwordHash)
         {
             ImageSource = imageSource;
         }
 
-        public User(UserType userType, string userName, string company, string position, string email, string passwordHash, string imageUriString)
-            : this(userType, userName, company, position, email, passwordHash)
+        public User(int id, UserType userType, string userName, string company, string position, string email, string passwordHash, string imageUriString)
+            : this(id, userType, userName, company, position, email, passwordHash)
         {
             var uri = new Uri(imageUriString, UriKind.Relative);
             ImageSource = new BitmapImage(uri);
         }
 
-        /*
-        public static User ExampleUser { get; }
-            = new User(UserType.User, "Павел Мернов", "HandShaker Inc.", "Junior .NET-разработчик", "paulmernov@gmail.com", "11111111", "/UserLib/PhotoMeCaucasus.jpg");
-
-        public static User ExampleAdmin { get; }
-            = new User(UserType.Admin, "Павел Мернов", "HandShaker Inc.", "Администратор", "paulmernov@gmail.com", "11111111", "/UserLib/PhotoMeCaucasus.jpg");
-
-        */
         public override string ToString()
         {
             return string.Join(".", UserType, UserName, Company, Position);
+        }
+
+        public string Serialize()
+        {
+            var attrId = "Id".GetSHA256();
+            var userTypeAttr = "UserType".GetSHA256();
+            var userNameAttr = "UserName".GetSHA256();
+            var attrCompany = "Company".GetSHA256();
+            var attrPosition = "Position".GetSHA256();
+            var attrEmail = "Email".GetSHA256();
+            var attrPasswordHash = "PasswordHash".GetSHA256();
+            var attrIsOnline = "IsOnline".GetSHA256();
+            var attrChats = "Chats".GetSHA256();
+            var attrImageSource = "ImageSource".GetSHA256();
+            var attrKey = "Key".GetSHA256();
+
+            var key = _key;
+
+            var valueId = Id.ToString().EncodeAES(key);
+            var valueUserType = UserType.ToString().EncodeAES(key);
+            var valueUserName = UserName.EncodeAES(key);
+            var valueCompany = Company.EncodeAES(key);
+            var valuePosition = Position.EncodeAES(key);
+            var valueEmail = Email.EncodeAES(key);
+            var valueIsOnline = IsOnline.ToString().EncodeAES(key);
+            var valueChats = Chats.Select(chat => "".EncodeAES(key)).ToList();
+            var valueImageSource = JsonSerializer.Serialize(ImageSource).EncodeAES(key);
+            var valueKey = key.EncodeAES(KeyGenerator.GetUniversalKey());
+
+            var dictAttrs = new Dictionary<string, string>
+            {
+                [attrId] = valueId,
+                [userTypeAttr] = valueUserType,
+                [userNameAttr] = valueUserName,
+                [attrCompany] = valueCompany,
+                [attrPosition] = valuePosition,
+                [attrEmail] = valueEmail,
+                [attrPasswordHash] = PasswordHash.EncodeAES(key),
+                [attrIsOnline] = valueIsOnline,
+                [attrChats] = JsonSerializer.Serialize(valueChats),
+                [attrImageSource] = valueImageSource,
+                [attrKey] = valueKey,
+            };
+
+            var jsonString = JsonSerializer.Serialize(dictAttrs);
+
+            return jsonString;
         }
     }
 }

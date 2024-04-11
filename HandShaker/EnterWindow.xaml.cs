@@ -80,7 +80,9 @@ namespace HandShaker
 
         private void btnEnter_Click(object sender, RoutedEventArgs e)
         {
-            var user = User.ExampleAdmin;
+            var user = Examples.ExampleAdmin;
+            user.Chats.Add(Examples.ExampleChat);
+
             user.IsOnline = true;
 
             App.CurrentApp.User = user;

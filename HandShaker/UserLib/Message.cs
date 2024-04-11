@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HandShaker.Serialization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,12 @@ namespace HandShaker.UserLib
 
 
 
-        public Message() { }
+        public Message(string text, User from, DateTime dateTime)
+        {
+            Text = text;
+            From = from;
+            DateTime = dateTime;
+        }
 
         public override int GetHashCode()
         {
@@ -34,5 +40,6 @@ namespace HandShaker.UserLib
         {
             return obj != null && obj is Message && Equals((Message)obj);
         }
+
     }
 }
