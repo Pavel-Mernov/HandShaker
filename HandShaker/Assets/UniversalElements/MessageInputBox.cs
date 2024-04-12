@@ -27,6 +27,8 @@ namespace HandShaker.Assets.UniversalElements
 
         private StackPanel inputPanel => Template.FindName("inputPanel", this) as StackPanel;
 
+        private Button btnSend => Template.FindName("btnSend", this) as Button;
+
         public MessageInputBox(User user, Chat chat)
         {
             _user = user;
@@ -43,7 +45,7 @@ namespace HandShaker.Assets.UniversalElements
 
             inputMessageTextBox.TextChanged += InputMessageTextBox_TextChanged;
 
-            // inputPanel.Width = mainBorder.ActualWidth;
+            inputPanel.Width = this.Width - btnAttach.Width - btnSend.Width - btnSend.Margin.Left;
             // inputMessageTextBox.MaxWidth = inputPanel.Width;
         }
 

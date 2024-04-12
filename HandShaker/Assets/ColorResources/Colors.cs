@@ -36,5 +36,7 @@ namespace HandShaker.Assets.ColorResources
         public static readonly Brush White = new SolidColorBrush(Color.FromRgb(0xff, 0xff, 0xff));
 
         public static readonly Brush Transparent = new SolidColorBrush(Color.FromArgb(0x0, 0xff, 0xff, 0xff));
+
+        public static readonly Brush MessageViewLightBlue = _instance.FindResource("MessageViewLightBlue") as Brush;
     }
 }

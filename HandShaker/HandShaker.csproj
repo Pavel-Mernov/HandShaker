@@ -114,6 +114,8 @@
     <Compile Include="Assets\UniversalElements\ChatPanel.cs" />
     <Compile Include="Assets\UniversalElements\ChatView.cs" />
     <Compile Include="Assets\UniversalElements\MessageInputBox.cs" />
+    <Compile Include="Assets\UniversalElements\MessagesListView.cs" />
+    <Compile Include="Assets\UniversalElements\MessageView.cs" />
     <Compile Include="Assets\UniversalElements\UserItemView.cs" />
     <Compile Include="Hash\AESAdapter.cs" />
     <Compile Include="Keys\KeyGenerator.cs" />

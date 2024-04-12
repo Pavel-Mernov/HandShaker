@@ -55,6 +55,7 @@
             </StackPanel>
 
             <StackPanel
+                x:Name="chatSearchPanel"
                 Grid.Row="2"
                 Grid.Column="0"
                 Orientation="Vertical"

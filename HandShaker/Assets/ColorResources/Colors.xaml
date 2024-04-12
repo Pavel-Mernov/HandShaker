@@ -12,4 +12,5 @@
     <Brush x:Key="ClosingButtonRed">#BF4040</Brush>
     <Brush x:Key="DarkGreen">#007F00</Brush>
     <Brush x:Key="LightGreen">#00DD00</Brush>
+    <Brush x:Key="MessageViewLightBlue">#AF3D7FAF</Brush>
 </ResourceDictionary>
