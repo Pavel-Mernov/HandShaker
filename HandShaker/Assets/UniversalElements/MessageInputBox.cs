@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 using System.Windows;
 using System.Windows.Controls;
-
+using System.Windows.Input;
 using static HandShaker.Assets.ColorResources.Colors;
 
 namespace HandShaker.Assets.UniversalElements
@@ -47,6 +47,19 @@ namespace HandShaker.Assets.UniversalElements
 
             inputPanel.Width = this.Width - btnAttach.Width - btnSend.Width - btnSend.Margin.Left;
             // inputMessageTextBox.MaxWidth = inputPanel.Width;
+
+            lblPlaceholder.MouseEnter += LblPlaceholder_MouseEnter;
+            lblPlaceholder.MouseLeave += LblPlaceholder_MouseLeave;
+        }
+
+        private void LblPlaceholder_MouseLeave(object sender, MouseEventArgs e)
+        {
+            lblPlaceholder.Foreground = DarkGray;
+        }
+
+        private void LblPlaceholder_MouseEnter(object sender, MouseEventArgs e)
+        {
+            lblPlaceholder.Foreground = Black;
         }
 
         private void InputMessageTextBox_TextChanged(object sender, TextChangedEventArgs e)

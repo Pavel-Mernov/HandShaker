@@ -117,6 +117,9 @@
     <Compile Include="Assets\UniversalElements\MessagesListView.cs" />
     <Compile Include="Assets\UniversalElements\MessageView.cs" />
     <Compile Include="Assets\UniversalElements\UserItemView.cs" />
+    <Compile Include="CallWindow.xaml.cs">
+      <DependentUpon>CallWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Hash\AESAdapter.cs" />
     <Compile Include="Keys\KeyGenerator.cs" />
     <Compile Include="OtherUserWindow.xaml.cs">
@@ -145,6 +148,10 @@
     <Compile Include="WebSocket\Client.cs" />
     <Compile Include="WebSocket\IClient.cs" />
     <Page Include="AddUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CallWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

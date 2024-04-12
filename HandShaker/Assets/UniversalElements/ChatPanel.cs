@@ -30,6 +30,7 @@ namespace HandShaker.Assets.UniversalElements
         private IconButton btnCall { get; } = new IconButton
         {
             Foreground = Black,
+            
         };
 
         private ScrollViewer messagesViewer => Template.FindName("messagesViewer", this) as ScrollViewer;
@@ -55,16 +56,23 @@ namespace HandShaker.Assets.UniversalElements
                 // Check if the other user is online and show the online indicator
                 bool isOtherUserOnline = otherUser.IsOnline;
                 elOnlineIndicator.Visibility = isOtherUserOnline ? Visibility.Visible : Visibility.Collapsed;
+
+                // Set up IconButton for call
+                btnCall.Visibility = Visibility.Visible;
+                btnCall.Content = FindResource("call");
+                btnCall.Click += BtnCall_Click;
+                btnCall.MouseEnter += BtnCall_MouseEnter;
+                btnCall.MouseLeave += BtnCall_MouseLeave;
+                btnCall.Click += (s, e) =>
+                {
+                    var callWindow = new CallWindow(User, otherUser);
+                    callWindow.Show();
+                };
+
+                // Add IconButton to the panel
+                itemsPanel.Children.Add(btnCall);
             }
-
-            // Set up IconButton for call
-            btnCall.Content = FindResource("call");
-            btnCall.Click += BtnCall_Click;
-            btnCall.MouseEnter += BtnCall_MouseEnter;
-            btnCall.MouseLeave += BtnCall_MouseLeave;
-
-            // Add IconButton to the panel
-            itemsPanel.Children.Add(btnCall);
+           
 
             //messagesViewer.Height = SystemParameters.PrimaryScreenHeight - 250;
         }

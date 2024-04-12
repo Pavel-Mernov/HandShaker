@@ -13,4 +13,6 @@
     <Brush x:Key="DarkGreen">#007F00</Brush>
     <Brush x:Key="LightGreen">#00DD00</Brush>
     <Brush x:Key="MessageViewLightBlue">#AF3D7FAF</Brush>
+    <Brush x:Key="DarkBlue">#DF3D3DFF</Brush>
+    <Brush x:Key="ClosingButtonPink">#DF6060</Brush>
 </ResourceDictionary>
