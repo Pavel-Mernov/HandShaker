@@ -67,7 +67,7 @@ namespace HandShakerAdmin
             txtPassword.Password = string.Empty;
             txtRepeatPassword.Password = string.Empty;
 
-            App.CurrentApp.Shutdown();
+            //App.CurrentApp.Shutdown();
         }
 
         private void TxtUsername_TextChanged(object sender, TextChangedEventArgs e)

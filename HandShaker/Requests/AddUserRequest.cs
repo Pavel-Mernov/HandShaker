@@ -11,7 +11,7 @@ namespace HandShaker.Requests
 {
     public class AddUserRequest : IRequest
     {
-        private User _user;
+        private readonly User _user;
 
         public AddUserRequest(User user)
         {

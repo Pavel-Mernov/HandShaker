@@ -33,6 +33,8 @@ namespace HandShaker
             _toUser = toUser;
 
             tbChatName.Text = _toUser.UserName;
+
+            imgUserPhoto.Source = _toUser.ImageSource;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

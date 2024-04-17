@@ -11,8 +11,6 @@ namespace HandShakerAdmin.Request
 {
     public class AddUserRequest(User user) : IRequest
     {
-        private readonly User _user = user;
-
         public RequestType RequestType => RequestType.AddUser;
 
         public string Serialize()
@@ -23,7 +21,7 @@ namespace HandShakerAdmin.Request
             var attrDict = new Dictionary<string, string>
             {
                 [attrRequestType] = RequestType.AddUser.ToString().GetSHA256(),
-                [attrUser] = _user.Serialize()
+                [attrUser] = user.Serialize()
             };
 
             var jsonString = JsonSerializer.Serialize(attrDict);

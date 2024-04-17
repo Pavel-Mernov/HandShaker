@@ -39,7 +39,7 @@ namespace HandShakerAdmin.Hash
 
             var encryptor = _aes.CreateEncryptor(_aes.Key, _aes.IV);
 
-            using (var msEncrypt = new MemoryStream(dataBytes))
+            using (var msEncrypt = new MemoryStream())
             {
                 var csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write);
                 using (var swEncrypt = new StreamWriter(csEncrypt))
@@ -66,27 +66,25 @@ namespace HandShakerAdmin.Hash
             }
 
             _aes.Key = Encoding.UTF8.GetBytes(key);
-            _aes.IV = Array.Empty<byte>();
+
+            var IVBytes = new byte[16];
+            Array.Fill(IVBytes, (byte)' ');
+            _aes.IV = IVBytes;
 
             var dataBytes = encoding.GetBytes(data);
 
             var decryptor = _aes.CreateDecryptor(_aes.Key, _aes.IV);
 
-            byte[] resultBytes;
+            var result = string.Empty;
 
             using (var msDecrypt = new MemoryStream(dataBytes))
             {
-                using (var csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Write))
-                {
-                    using (var swDecrypt = new StreamWriter(csDecrypt))
-                    {
-                        swDecrypt.Write(data);
-                    }
-                    resultBytes = msDecrypt.ToArray();
-                }
+                var csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read);
+                var srDecrypt = new StreamReader(csDecrypt);
+                result = srDecrypt.ReadToEnd();
             }
 
-            return encoding.GetString(resultBytes);
+            return result;
         }
 
         public static string DecodeAES(this string data, string key) => DecodeAES(data, key, Encoding.UTF8);

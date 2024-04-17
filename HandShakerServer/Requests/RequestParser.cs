@@ -7,7 +7,7 @@ namespace HandShakerServer.Requests
     {
         public static IDictionary<RequestAttributes, object> ParseRequest(this string request)
         {
-            var requestDictionary = JsonSerializer.Deserialize<Dictionary<string, object>>(request);
+            var requestDictionary = JsonSerializer.Deserialize<Dictionary<string, string>>(request);
             
             if (requestDictionary == null)
             {
@@ -19,7 +19,7 @@ namespace HandShakerServer.Requests
             
             var requestKey = "RequestType".GetSHA256();
 
-            if (!requestDictionary.TryGetValue(requestKey, out object? value))
+            if (!requestDictionary.TryGetValue(requestKey, out string? value))
             {
                 return new Dictionary<RequestAttributes, object>
                 {
@@ -41,6 +41,36 @@ namespace HandShakerServer.Requests
             else if (requestType == RequestType.UpdateState.GetSHA256())
             {
                 result[RequestAttributes.RequestType] = RequestType.UpdateState;
+            }
+            else if (requestType == RequestType.AddUser.GetSHA256())
+            {
+                result[RequestAttributes.RequestType] = RequestType.AddUser;
+                var userKey = "User".GetSHA256();
+
+                if (!requestDictionary.TryGetValue(userKey, out string? userString))
+                {
+                    result[RequestAttributes.RequestType] = RequestType.Unknown;
+                    return result;
+                }
+
+                var userData = JsonSerializer.Deserialize<Dictionary<string, string>>(userString);
+
+                if (userData == null)
+                {
+                    result[RequestAttributes.RequestType] = RequestType.Unknown;
+                    return result;
+                }
+
+                if (!userData.TryGetValue("Key".GetSHA256(), out string? userCipherKey))
+                {
+                    return new Dictionary<RequestAttributes, object>()
+                    {
+                        [RequestAttributes.RequestType] = RequestType.Unknown,
+                    };
+                }
+
+                userCipherKey = userCipherKey.DecodeAES(AESAdapter.GetUniversalKey());
+
             }
             // add other a
 

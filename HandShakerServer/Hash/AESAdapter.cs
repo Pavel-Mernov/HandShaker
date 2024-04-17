@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace HandShaker.Hash
+namespace HandShakerServer.Hash
 {
     public static class AESAdapter
     {
+
+
         private static readonly Aes _aes = Aes.Create();
 
         public static string EncodeAES(this string data, string key, Encoding encoding)
@@ -19,8 +16,17 @@ namespace HandShaker.Hash
                 return string.Empty;
             }
 
-            _aes.Key = encoding.GetBytes(key);
-            _aes.IV = Array.Empty<byte>();
+            var originalKeyBytes = encoding.GetBytes(key);
+
+            var keyBytes = new byte[16];
+            Array.Fill(keyBytes, (byte)' ');
+            Array.Copy(originalKeyBytes, keyBytes, new[] { keyBytes.Length, originalKeyBytes.Length }.Min());
+
+            var IVbytes = new byte[16];
+            Array.Fill(IVbytes, (byte)' ');
+
+            _aes.Key = keyBytes;
+            _aes.IV = IVbytes;
 
             var dataBytes = encoding.GetBytes(data);
 
@@ -30,14 +36,12 @@ namespace HandShaker.Hash
 
             using (var msEncrypt = new MemoryStream())
             {
-                using (var csEncrypt =  new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                var csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write);
+                using (var swEncrypt = new StreamWriter(csEncrypt))
                 {
-                    using (var swEncrypt = new StreamWriter(csEncrypt))
-                    {
-                        swEncrypt.Write(data);
-                    }
-                    resultBytes = msEncrypt.ToArray();
+                    swEncrypt.Write(data);
                 }
+                resultBytes = msEncrypt.ToArray();
             }
 
             return encoding.GetString(resultBytes);
@@ -56,14 +60,10 @@ namespace HandShaker.Hash
                 return string.Empty;
             }
 
-            _aes.Key = Encoding.UTF8.GetBytes(key);
+            _aes.Key = encoding.GetBytes(key);
 
             var IVBytes = new byte[16];
-            for (int i = 0; i < IVBytes.Length; i++)
-            {
-                IVBytes[i] = (byte)' ';
-            }
-
+            Array.Fill(IVBytes, (byte)' ');
             _aes.IV = IVBytes;
 
             var dataBytes = encoding.GetBytes(data);
@@ -83,5 +83,12 @@ namespace HandShaker.Hash
         }
 
         public static string DecodeAES(this string data, string key) => DecodeAES(data, key, Encoding.UTF8);
+
+        public static string GetUniversalKey()
+        {
+            var key = "asgrfghk--gg.x?Z"[..16];
+
+            return key;
+        }
     }
 }

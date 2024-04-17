@@ -76,6 +76,7 @@ namespace HandShaker.UserLib
             var attrCompany = "Company".GetSHA256();
             var attrPosition = "Position".GetSHA256();
             var attrEmail = "Email".GetSHA256();
+            var loginEmail = "Login".GetSHA256();
             var attrPasswordHash = "PasswordHash".GetSHA256();
             var attrIsOnline = "IsOnline".GetSHA256();
             var attrChats = "Chats".GetSHA256();
@@ -90,8 +91,9 @@ namespace HandShaker.UserLib
             var valueCompany = Company.EncodeAES(key);
             var valuePosition = Position.EncodeAES(key);
             var valueEmail = Email.EncodeAES(key);
+            var valueLogin = Email.GetSHA256();
             var valueIsOnline = IsOnline.ToString().EncodeAES(key);
-            var valueChats = Chats.Select(chat => chat.Id.ToString().EncodeAES(key)).ToList();
+            var valueChats = Chats.Select(chat => "".EncodeAES(key)).ToList();
             var valueImageSource = JsonSerializer.Serialize(ImageSource).EncodeAES(key);
             var valueKey = key.EncodeAES(KeyGenerator.GetUniversalKey());
 
@@ -103,6 +105,7 @@ namespace HandShaker.UserLib
                 [attrCompany] = valueCompany,
                 [attrPosition] = valuePosition,
                 [attrEmail] = valueEmail,
+                [loginEmail] = valueLogin,
                 [attrPasswordHash] = PasswordHash.EncodeAES(key),
                 [attrIsOnline] = valueIsOnline,
                 [attrChats] = JsonSerializer.Serialize(valueChats),
